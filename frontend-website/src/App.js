@@ -14,6 +14,7 @@ import {
 import Records from "./config.json";
 import StudyPage from "./StudyPage";
 import arrayShuffle from "array-shuffle";
+import Instructions from "./Instructions";
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
@@ -68,9 +69,9 @@ function App() {
             <Route
               exact={true}
               path="/"
-              element={<Navigate to={`/${generateUserId()}/instructions`} />}
+              element={<Navigate to={`/${generateUserId()}/study/0`} />}
             />
-            <Route path="/:id/instructions" element={<Instructions />} />
+            {/* <Route path="/:id/instructions" element={<Instructions />} /> */}
             <Route
               exact={true}
               path={`/:id/study/:study_part_i`}
