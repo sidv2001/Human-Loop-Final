@@ -13,14 +13,14 @@ class DistractionTask extends Component {
 
     this.setState({ adapt_state });
     console.log(this.state);
+    var copy = {};
+    Object.assign(copy, this.state.results);
+    this.props.update_results(copy);
   };
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     const adapt_state = prevState;
     if (nextProps.time === 330000) {
-      var copy = {};
-      Object.assign(copy, prevState.results);
-      nextProps.update_results(copy);
       adapt_state.disabled = true;
     }
     return adapt_state;

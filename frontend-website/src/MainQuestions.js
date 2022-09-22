@@ -22,6 +22,9 @@ class MainQuestions extends Component {
   updateResults = (question_results) => {
     this.setResults(question_results, this.state.current_question);
     console.log(this.state.results);
+    var copy = {};
+    Object.assign(copy, this.state.results);
+    this.props.update_results(copy);
   };
 
   setResults = (results, current_question) => {
@@ -55,11 +58,6 @@ class MainQuestions extends Component {
         console.log(adapt_state);
         return adapt_state;
       }
-    }
-    if (nextProps.time === 330000) {
-      var copy = {};
-      Object.assign(copy, adapt_state.results);
-      nextProps.update_results(copy);
     }
     return null;
   };
