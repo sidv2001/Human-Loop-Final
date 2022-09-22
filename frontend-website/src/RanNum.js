@@ -73,7 +73,7 @@ class RanNum extends Component {
           " + ",
         ];
         adapt_state.is_displayed = false;
-        this.props.update_results({
+        nextProps.update_results({
           questions_asked: adapt_state.questions_asked,
           question_answers: adapt_state.question_answers,
         });
