@@ -26,7 +26,10 @@ class VideoCap extends Component {
                   allowFullScreen
                 ></iframe>
               </div>
-              <div>Please transcribe the following video into text</div>
+              <div>
+                Please transcribe what is said in the below video to the best of
+                your abilities.
+              </div>
             </Form.Label>
             <Form.Control
               as="textarea"

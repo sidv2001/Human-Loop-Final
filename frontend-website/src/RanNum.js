@@ -87,7 +87,8 @@ class RanNum extends Component {
               <Form.Label>
                 <div>
                   {" "}
-                  Please solve the following math problem: <br />
+                  Please add the below numbers. A new question will appear in 30
+                  seconds. <br />
                   <h4>
                     {" "}
                     {this.state.current_question[0]}{" "}

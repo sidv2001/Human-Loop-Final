@@ -71,48 +71,69 @@ class MainQuestions extends Component {
   };
 
   renderQuestion = () => {
+    const during_task_instruction = (
+      <div>
+        Please answer the below question in 60 seconds. Click “Submit” the
+        moment you are done.
+      </div>
+    );
     if (this.state.is_displayed) {
       if (
         this.props.config["questions"][this.state.current_question]["type"] ===
         "open-ended"
       ) {
         return (
-          <OpenEndedQ
-            config={this.props.config["questions"][this.state.current_question]}
-            current_question={this.state.current_question}
-            update_results={this.updateResults}
-            update_display={this.updateDisplay}
-            user_busyness={this.props.config["busyness"]}
-            interval={this.props.config["interval"]}
-          ></OpenEndedQ>
+          <div>
+            {during_task_instruction}
+            <OpenEndedQ
+              config={
+                this.props.config["questions"][this.state.current_question]
+              }
+              current_question={this.state.current_question}
+              update_results={this.updateResults}
+              update_display={this.updateDisplay}
+              user_busyness={this.props.config["busyness"]}
+              interval={this.props.config["interval"]}
+            ></OpenEndedQ>
+          </div>
         );
       } else if (
         this.props.config["questions"][this.state.current_question]["type"] ===
         "mcq"
       ) {
         return (
-          <MCQ
-            config={this.props.config["questions"][this.state.current_question]}
-            current_question={this.state.current_question}
-            update_results={this.updateResults}
-            update_display={this.updateDisplay}
-            user_busyness={this.props.config["busyness"]}
-            interval={this.props.config["interval"]}
-          ></MCQ>
+          <div>
+            {during_task_instruction}
+            <MCQ
+              config={
+                this.props.config["questions"][this.state.current_question]
+              }
+              current_question={this.state.current_question}
+              update_results={this.updateResults}
+              update_display={this.updateDisplay}
+              user_busyness={this.props.config["busyness"]}
+              interval={this.props.config["interval"]}
+            ></MCQ>
+          </div>
         );
       } else if (
         this.props.config["questions"][this.state.current_question]["type"] ===
         "bbox"
       ) {
         return (
-          <BBox
-            config={this.props.config["questions"][this.state.current_question]}
-            current_question={this.state.current_question}
-            update_results={this.updateResults}
-            update_display={this.updateDisplay}
-            user_busyness={this.props.config["busyness"]}
-            interval={this.props.config["interval"]}
-          ></BBox>
+          <div>
+            {during_task_instruction}
+            <BBox
+              config={
+                this.props.config["questions"][this.state.current_question]
+              }
+              current_question={this.state.current_question}
+              update_results={this.updateResults}
+              update_display={this.updateDisplay}
+              user_busyness={this.props.config["busyness"]}
+              interval={this.props.config["interval"]}
+            ></BBox>
+          </div>
         );
       } else {
         return <div></div>;
@@ -120,12 +141,21 @@ class MainQuestions extends Component {
     }
   };
 
+  display_pre_task = () => {
+    if (!this.state.is_displayed) {
+      return (
+        <div>
+          A question will appear here occasionally. You will have 60 seconds to
+          answer it. Click “Submit” when you are done.
+        </div>
+      );
+    }
+  };
+
   render() {
     return (
       <div>
-        {" "}
-        You have 60 seconds to answer the following question. Please click
-        submit the moment you are done with you ranswer to the question.{" "}
+        {this.display_pre_task()}
         {this.renderQuestion()}
       </div>
     );

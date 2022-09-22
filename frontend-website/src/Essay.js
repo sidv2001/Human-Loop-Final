@@ -15,6 +15,11 @@ class Essay extends Component {
   render() {
     return (
       <div>
+        <div>
+          Please respond to the below prompt with between 7-9 sentences. Feel
+          free to create fictitious responses, and avoid giving personal
+          information.
+        </div>
         <Form>
           <Form.Group className="mb-3" controlId={"Form.Question"}>
             <Form.Label>

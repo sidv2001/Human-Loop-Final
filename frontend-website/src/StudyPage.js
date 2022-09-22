@@ -6,6 +6,8 @@ import MainQuestions from "./MainQuestions";
 import { Button, ModalBody } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 
 import Survey from "./Survey";
 
@@ -15,7 +17,7 @@ class StudyPage extends Component {
 
     this.state = {
       timer: "00:05:32",
-      total_time: 2000,
+      total_time: 332000,
       current_time: 0,
       study_order: parseInt(this.props.router.params.study_part_i),
       current_condition:
@@ -72,9 +74,13 @@ class StudyPage extends Component {
   };
 
   move_to = (study_part) => {
-    this.props.router.navigate(
-      "/" + this.state.user_id + "/study/" + study_part.toString()
-    );
+    if (study_part < 14) {
+      this.props.router.navigate(
+        "/" + this.state.user_id + "/study/" + study_part.toString()
+      );
+    } else {
+      this.props.router.navigate("/" + this.state.user_id + "/demographic");
+    }
   };
 
   setTimerId = (id) => {
@@ -245,9 +251,48 @@ class StudyPage extends Component {
     if (this.state.experiment_start) {
       return (
         <div>
-          <Button variant="primary" type="submit" onClick={this.startTimer}>
-            Start
-          </Button>
+          <div class="row justify-content-center">
+            <Card style={{ width: "60rem" }}>
+              <Card.Body>
+                <Card.Title>Instructions</Card.Title>
+                <Card.Text class="row justify-content-left">
+                  <div>
+                    You’ll be completing two tasks, one on the left-side of the
+                    screen and one on the right-side of the screen.
+                    <ListGroup as="ol" numbered>
+                      <ListGroup.Item as="li">
+                        You have 5 minutes and 30 seconds to complete the tasks.
+                        A timer (above) will display remaining time
+                      </ListGroup.Item>
+                      <ListGroup.Item as="li">
+                        The left-side task will be present for the entire
+                        duration of the timer. The right-side task(s) will
+                        appear occasionally.
+                      </ListGroup.Item>
+                      <ListGroup.Item as="li">
+                        Your goal is to complete all the tasks as accurately as
+                        possible within the allotted time. You will NOT be paid
+                        if you don’t complete tasks accurately.
+                      </ListGroup.Item>
+                      <ListGroup.Item as="li">
+                        Periodically, you will be asked to complete a brief
+                        survey. You MUST complete the survey to proceed. The
+                        timer will be paused for the duration of the survey.
+                      </ListGroup.Item>
+                    </ListGroup>
+                  </div>
+                </Card.Text>
+                <Button
+                  variant="primary"
+                  type="submit"
+                  onClick={this.startTimer}
+                >
+                  {" "}
+                  Start Study{" "}
+                </Button>
+              </Card.Body>
+            </Card>
+          </div>
         </div>
       );
     } else {

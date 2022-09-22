@@ -15,6 +15,8 @@ import Records from "./config.json";
 import StudyPage from "./StudyPage";
 import arrayShuffle from "array-shuffle";
 import Instructions from "./Instructions";
+import { ExitSurveyDemographic } from "./ExitSurveyDemographic";
+import { CompletionCode } from "./CompletionCode";
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
@@ -54,6 +56,9 @@ const ordering = generateRandomOrdering();
 function App() {
   var config = Records;
   var StudyPageWithRouter = withRouter(StudyPage);
+  var InstructionsWithRouter = withRouter(Instructions);
+  var ExitSurveyDemographicWithRouter = withRouter(ExitSurveyDemographic);
+
   return (
     <div className="App">
       <Router>
@@ -69,9 +74,12 @@ function App() {
             <Route
               exact={true}
               path="/"
-              element={<Navigate to={`/${generateUserId()}/study/0`} />}
+              element={<Navigate to={`/${generateUserId()}/instructions`} />}
             />
-            {/* <Route path="/:id/instructions" element={<Instructions />} /> */}
+            <Route
+              path="/:id/instructions"
+              element={<InstructionsWithRouter />}
+            />
             <Route
               exact={true}
               path={`/:id/study/:study_part_i`}
@@ -82,6 +90,18 @@ function App() {
                   ordering={ordering}
                 />
               }
+            />
+            <Route
+              exact={true}
+              path={`/:id/demographic`}
+              element={
+                <ExitSurveyDemographicWithRouter server_url={SERVER_URL} />
+              }
+            />
+            <Route
+              exact={true}
+              path={`/:id/completionCode`}
+              element={<CompletionCode />}
             />
             {/* <Route
               exact={true}

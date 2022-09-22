@@ -1,6 +1,42 @@
 [
   {
     "main-task": {
+      "interval": 600000,
+      "busyness": 0,
+      "questions": [],
+      "first survey": 331000,
+      "first question": 600000
+    },
+    "side-task": { "busyness": 1, "max_number": 100, "interval": 30000 }
+  },
+  {
+    "main-task": {
+      "interval": 600000,
+      "busyness": 0,
+      "questions": [],
+      "first survey": 331000,
+      "first question": 600000
+    },
+    "side-task": {
+      "busyness": 2,
+      "prompt": "Describe your favorite class in high school and why you enjoyed it"
+    }
+  },
+  {
+    "main-task": {
+      "interval": 600000,
+      "busyness": 0,
+      "questions": [],
+      "first survey": 531000,
+      "first question": 600000
+    },
+    "side-task": {
+      "busyness": 3,
+      "source": "https://www.youtube.com/embed/67gIQ_sBKTI?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com"
+    }
+  },
+  {
+    "main-task": {
       "interval": 60000,
       "busyness": 0,
       "questions": [
@@ -60,42 +96,6 @@
     },
     "side-task": {
       "busyness": 0
-    }
-  },
-  {
-    "main-task": {
-      "interval": 600000,
-      "busyness": 0,
-      "questions": [],
-      "first survey": 331000,
-      "first question": 600000
-    },
-    "side-task": { "busyness": 1, "max_number": 100, "interval": 30000 }
-  },
-  {
-    "main-task": {
-      "interval": 600000,
-      "busyness": 0,
-      "questions": [],
-      "first survey": 331000,
-      "first question": 600000
-    },
-    "side-task": {
-      "busyness": 2,
-      "prompt": "In 7-9 Sentences, describe your favorite class in high school and why you enjoyed it"
-    }
-  },
-  {
-    "main-task": {
-      "interval": 600000,
-      "busyness": 0,
-      "questions": [],
-      "first survey": 531000,
-      "first question": 600000
-    },
-    "side-task": {
-      "busyness": 3,
-      "source": "https://www.youtube.com/embed/67gIQ_sBKTI?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com"
     }
   },
 
@@ -432,7 +432,7 @@
     },
     "side-task": {
       "busyness": 2,
-      "prompt": "In 7-9 Sentences, describe what was the class you hated the most in high school and why you disliked it",
+      "prompt": "Describe your least liked class in high school and why you disliked it",
       "interval": 30000
     }
   },
@@ -476,7 +476,7 @@
     },
     "side-task": {
       "busyness": 2,
-      "prompt": "In 7-9 Sentences, describe what was the sport you like the most and why you like it"
+      "prompt": "Describe what your favorite sport was and why you liked it"
     }
   },
   {
@@ -512,7 +512,7 @@
     },
     "side-task": {
       "busyness": 2,
-      "prompt": "In 7-9 Sentences, describe what isf the sport you dislike the most and why you dislike it"
+      "prompt": "Describe your least liked sport and why you dislike it"
     }
   },
 
