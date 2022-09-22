@@ -58,6 +58,7 @@ class RanNum extends Component {
       if (prevState.when_to_display === nextProps.time) {
         adapt_state.is_displayed = true;
         console.log(adapt_state, "reached false after submit loop");
+        adapt_state.when_to_display += nextProps.interval;
         return adapt_state;
       }
     } else {
@@ -71,7 +72,6 @@ class RanNum extends Component {
           RanNum.getRandomInt(nextProps.max),
           " + ",
         ];
-        adapt_state.when_to_display += nextProps.interval;
         adapt_state.is_displayed = false;
         this.props.update_results({
           questions_asked: adapt_state.questions_asked,
