@@ -23,7 +23,7 @@ class Instructions extends Component {
         <Card style={{ width: "50rem" }}>
           <Card.Body>
             <Card.Title>Cognitive Workload of Multitasking Survey</Card.Title>
-            <Card.Text class="row justify-content-left">
+            <Card.Text>
               <div>
                 For this HIT we will be asking you to complete multiple tasks
                 simultaneously and be asked about your workload while trying to

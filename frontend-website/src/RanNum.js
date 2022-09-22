@@ -18,8 +18,8 @@ class RanNum extends Component {
       " + ",
     ],
     current_question_number: 0,
-    is_displayed: true,
-    when_to_display: 30000,
+    is_displayed: false,
+    when_to_display: 2000,
   };
 
   static getRandomInt(max) {
@@ -43,10 +43,12 @@ class RanNum extends Component {
       " + ",
     ];
     adapt_state.is_displayed = false;
+    adapt_state.when_to_display += this.props.interval;
     this.props.update_results({
       questions_asked: adapt_state.questions_asked,
       question_answers: adapt_state.question_answers,
     });
+    console.log(adapt_state, "submit handler");
     this.setState({ adapt_state });
   };
 
@@ -55,23 +57,27 @@ class RanNum extends Component {
     if (!prevState.is_displayed) {
       if (prevState.when_to_display === nextProps.time) {
         adapt_state.is_displayed = true;
-        adapt_state.last_call = prevState.when_to_display + nextProps.interval;
+        console.log(adapt_state, "reached false after submit loop");
         return adapt_state;
       }
     } else {
       if (prevState.when_to_display - 1000 === nextProps.time) {
         adapt_state.questions_asked.push(adapt_state.current_question);
+        adapt_state.question_answers[adapt_state.current_question_number] =
+          "Null";
         adapt_state.current_question_number += 1;
         adapt_state.current_question = [
-          RanNum.getRandomInt(this.props.max),
-          RanNum.getRandomInt(this.props.max),
+          RanNum.getRandomInt(nextProps.max),
+          RanNum.getRandomInt(nextProps.max),
           " + ",
         ];
+        adapt_state.when_to_display += nextProps.interval;
         adapt_state.is_displayed = false;
         this.props.update_results({
           questions_asked: adapt_state.questions_asked,
           question_answers: adapt_state.question_answers,
         });
+        console.log(adapt_state, "reached inner loop");
         return adapt_state;
       }
     }
