@@ -62,44 +62,55 @@ class Survey extends Component {
         frustration: 0,
       };
       this.setState(reset_res);
+      this.setAlert(false);
     } else {
       this.setAlert(true);
     }
   };
 
   setMental = (value) => {
-    const adapt_state = this.state;
-    adapt_state.mental = value;
-    adapt_state.results.mental = value;
-    this.setState({ adapt_state });
+    return (event) => {
+      const adapt_state = this.state;
+      adapt_state.mental = value;
+      adapt_state.results.mental = value;
+      this.setState({ adapt_state });
+    };
   };
 
   setTemporal = (value) => {
-    const adapt_state = this.state;
-    adapt_state.temporal = value;
-    adapt_state.results.temporal = value;
-    this.setState({ adapt_state });
+    return (event) => {
+      const adapt_state = this.state;
+      adapt_state.temporal = value;
+      adapt_state.results.temporal = value;
+      this.setState({ adapt_state });
+    };
   };
 
   setPerformance = (value) => {
-    const adapt_state = this.state;
-    adapt_state.performance = value;
-    adapt_state.results.performance = value;
-    this.setState({ adapt_state });
+    return (event) => {
+      const adapt_state = this.state;
+      adapt_state.performance = value;
+      adapt_state.results.performance = value;
+      this.setState({ adapt_state });
+    };
   };
 
   setEffort = (value) => {
-    const adapt_state = this.state;
-    adapt_state.effort = value;
-    adapt_state.results.effort = value;
-    this.setState({ adapt_state });
+    return (event) => {
+      const adapt_state = this.state;
+      adapt_state.effort = value;
+      adapt_state.results.effort = value;
+      this.setState({ adapt_state });
+    };
   };
 
   setFrustration = (value) => {
-    const adapt_state = this.state;
-    adapt_state.frustration = value;
-    adapt_state.results.frustration = value;
-    this.setState({ adapt_state });
+    return (event) => {
+      const adapt_state = this.state;
+      adapt_state.frustration = value;
+      adapt_state.results.frustration = value;
+      this.setState({ adapt_state });
+    };
   };
 
   displayAlert = () => {
@@ -152,75 +163,60 @@ class Survey extends Component {
                     <b>Mental Demand</b>: {"\n"} How mentally demanding was the
                     task?
                   </Form.Label>
-                  <Col xs="9">
-                    <Form.Range
-                      value={this.state.mental}
-                      onChange={(e) => this.setMental(e.target.value)}
-                    />
-                  </Col>
-                  <Col xs="3">
-                    <Form.Control value={this.state.mental} />
-                  </Col>
+                  {this.getLikertQuestion(
+                    "Mental",
+                    this.setMental,
+                    "Demanding",
+                    "Easy"
+                  )}
                 </Form.Group>
                 <Form.Group as={Row}>
                   <Form.Label>
                     <b>Temporal Demand </b>: {"\n"} How hurried or rushed was
                     the pace of the task?
                   </Form.Label>
-                  <Col xs="9">
-                    <Form.Range
-                      value={this.state.temporal}
-                      onChange={(e) => this.setTemporal(e.target.value)}
-                    />
-                  </Col>
-                  <Col xs="3">
-                    <Form.Control value={this.state.temporal} />
-                  </Col>
+                  {this.getLikertQuestion(
+                    "Temporal",
+                    this.setTemporal,
+                    "Rushed",
+                    "Sedate"
+                  )}
                 </Form.Group>
                 <Form.Group as={Row}>
                   <Form.Label>
                     <b>Performance</b>: {"\n"} How successful were you in
                     accomplishing what you were asked to do?
                   </Form.Label>
-                  <Col xs="9">
-                    <Form.Range
-                      value={this.state.performance}
-                      onChange={(e) => this.setPerformance(e.target.value)}
-                    />
-                  </Col>
-                  <Col xs="3">
-                    <Form.Control value={this.state.performance} />
-                  </Col>
+                  {this.getLikertQuestion(
+                    "Performance",
+                    this.setPerformance,
+                    "Successful",
+                    "Unsuccessful"
+                  )}
                 </Form.Group>
                 <Form.Group as={Row}>
                   <Form.Label>
                     <b>Effort</b>: {"\n"} How hard did you have to work to
                     accomplish your level of performance?
                   </Form.Label>
-                  <Col xs="9">
-                    <Form.Range
-                      value={this.state.effort}
-                      onChange={(e) => this.setEffort(e.target.value)}
-                    />
-                  </Col>
-                  <Col xs="3">
-                    <Form.Control value={this.state.effort} />
-                  </Col>
+                  {this.getLikertQuestion(
+                    "Effort",
+                    this.setEffort,
+                    "Hard",
+                    "Little"
+                  )}
                 </Form.Group>
                 <Form.Group as={Row}>
                   <Form.Label>
                     <b>Frustration</b>: {"\n"} How irritated, stressed, and
                     annoyed were you?
                   </Form.Label>
-                  <Col xs="9">
-                    <Form.Range
-                      value={this.state.frustration}
-                      onChange={(e) => this.setFrustration(e.target.value)}
-                    />
-                  </Col>
-                  <Col xs="3">
-                    <Form.Control value={this.state.frustration} />
-                  </Col>
+                  {this.getLikertQuestion(
+                    "Frustration",
+                    this.setFrustration,
+                    "Frustrating",
+                    "Satisfying"
+                  )}
                 </Form.Group>
               </Form>
             </div>
@@ -234,6 +230,79 @@ class Survey extends Component {
       </div>
     );
   };
+  getLikertQuestion(key, onChange, negWord, posWord) {
+    return (
+      <React.Fragment>
+        <div key="inline-radio">
+          <div class="row align-items-center">
+            <div class="col">
+              <Form.Check.Label>Very {negWord}</Form.Check.Label>
+            </div>
+            <div class="col">
+              <Form.Check.Label>Somewhat {negWord}</Form.Check.Label>
+            </div>
+            <div class="col">
+              <Form.Check.Label>Neutral</Form.Check.Label>
+            </div>
+            <div class="col">
+              <Form.Check.Label>{posWord}</Form.Check.Label>
+            </div>
+            <div class="col">
+              <Form.Check.Label>Very {posWord}</Form.Check.Label>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col">
+              <Form.Check
+                inline
+                name={key}
+                type="radio"
+                id={`Strongly Disagree`}
+                onChange={onChange(0)}
+              />
+            </div>
+            <div class="col">
+              <Form.Check
+                inline
+                name={key}
+                type="radio"
+                id={`Somewhat Disagree`}
+                onChange={onChange(1)}
+              />
+            </div>
+            <div class="col">
+              <Form.Check
+                inline
+                name={key}
+                type="radio"
+                id={`Neither Agree Nor Disagree`}
+                onChange={onChange(2)}
+              />
+            </div>
+            <div class="col">
+              <Form.Check
+                inline
+                name={key}
+                type="radio"
+                id={`Somewhat Agree`}
+                onChange={onChange(3)}
+              />
+            </div>
+            <div class="col">
+              <Form.Check
+                inline
+                name={key}
+                type="radio"
+                id={`Strongly Agree`}
+                onChange={onChange(4)}
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+      </React.Fragment>
+    );
+  }
 
   render() {
     return this.displayModal();

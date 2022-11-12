@@ -20,18 +20,15 @@ class StudyPage extends Component {
       total_time: 332000,
       current_time: 0,
       study_order: parseInt(this.props.router.params.study_part_i),
-      current_condition:
-        this.props.ordering[parseInt(this.props.router.params.study_part_i)],
+      current_condition: this.props.ordering(this.props.router.params.id)[
+        parseInt(this.props.router.params.study_part_i)
+      ],
       main_timer_id: null,
       user_id: this.props.router.params.id,
       experiment_start: true,
       main_task_results: null,
       distraction_task_results: null,
       survey_results: [],
-      survey_timer:
-        this.props.config[
-          this.props.ordering[parseInt(this.props.router.params.study_part_i)]
-        ]["main-task"]["first survey"],
       current_survey: 0,
       display_survey: false,
       end_time: 0,
@@ -55,8 +52,6 @@ class StudyPage extends Component {
 
   updateNextSurvey = () => {
     const adapt_state = this.state;
-    adapt_state.survey_timer +=
-      this.props.config[this.state.current_condition]["main-task"]["interval"];
     adapt_state.current_survey += 1;
     this.setState({ adapt_state });
   };
@@ -64,6 +59,7 @@ class StudyPage extends Component {
   updateMain = (results) => {
     const adapt_state = this.state;
     adapt_state.main_task_results = results;
+    console.log("In Study page, question results put here");
     this.setState({ adapt_state });
   };
 
@@ -79,7 +75,7 @@ class StudyPage extends Component {
         "/" + this.state.user_id + "/study/" + study_part.toString()
       );
     } else {
-      this.props.router.navigate("/" + this.state.user_id + "/demographic");
+      this.props.router.navigate("/" + this.state.user_id + "/final_survey");
     }
   };
 
@@ -87,6 +83,11 @@ class StudyPage extends Component {
     const adapt_state = this.state;
     adapt_state.main_timer_id = id;
     this.setState({ adapt_state });
+  };
+
+  startSurvey = () => {
+    this.setDisplay(true);
+    this.pauseTimer();
   };
 
   setTimer = (time) => {
@@ -241,9 +242,8 @@ class StudyPage extends Component {
   };
 
   updateSurveyCondition = () => {
-    if (this.state.current_time === this.state.survey_timer) {
-      this.setDisplay(true);
-      this.pauseTimer();
+    if (this.state.current_time === this.state.total_time - 1000) {
+      this.startSurvey();
     }
   };
 
@@ -363,8 +363,10 @@ class StudyPage extends Component {
                         "main-task"
                       ]
                     }
+                    user_id={this.state.user_id}
                     time={this.state.current_time}
                     update_results={this.updateMain}
+                    start_survey={this.startSurvey}
                   ></MainQuestions>
                 </div>
               </div>

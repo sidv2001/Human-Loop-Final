@@ -39,15 +39,15 @@ class DistractionTask extends Component {
           time={this.props.time}
         ></RanNum>
       );
+      // } else if (this.props.config["busyness"] === 2) {
+      //   return (
+      //     <Essay
+      //       prompt={this.props.config["prompt"]}
+      //       disabled={this.state.disabled}
+      //       update_results={this.setAnswer}
+      //     ></Essay>
+      //   );
     } else if (this.props.config["busyness"] === 2) {
-      return (
-        <Essay
-          prompt={this.props.config["prompt"]}
-          disabled={this.state.disabled}
-          update_results={this.setAnswer}
-        ></Essay>
-      );
-    } else if (this.props.config["busyness"] === 3) {
       return (
         <VideoCap
           source={this.props.config["source"]}

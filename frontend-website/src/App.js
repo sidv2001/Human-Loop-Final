@@ -17,6 +17,8 @@ import arrayShuffle from "array-shuffle";
 import Instructions from "./Instructions";
 import { ExitSurveyDemographic } from "./ExitSurveyDemographic";
 import { CompletionCode } from "./CompletionCode";
+import { shuffle, mulberry32, cyrb53 } from "./helpers";
+import { FinalSurvey } from "./FinalSurvey";
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
@@ -42,22 +44,25 @@ function generateUserId() {
   return "_" + Math.random().toString(36).substr(2, 9);
 }
 
-function generateRandomOrdering() {
-  const order = [0, 1, 2];
-  const remaining_condition = arrayShuffle([
-    3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
-  ]);
+function generateRandomOrdering(id) {
+  var seed = cyrb53(id);
+  var rand = mulberry32(seed);
+  const order = [0, 1];
+  var remaining_condition = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  shuffle(remaining_condition, rand);
   const final_order = order.concat(remaining_condition);
+  console.log("Final", final_order);
   return final_order;
 }
 
-const ordering = generateRandomOrdering();
+const ordering = generateRandomOrdering;
 
 function App() {
   var config = Records;
   var StudyPageWithRouter = withRouter(StudyPage);
   var InstructionsWithRouter = withRouter(Instructions);
   var ExitSurveyDemographicWithRouter = withRouter(ExitSurveyDemographic);
+  var FinalSurveyWithRouter = withRouter(FinalSurvey);
 
   return (
     <div className="App">
@@ -97,6 +102,11 @@ function App() {
               element={
                 <ExitSurveyDemographicWithRouter server_url={SERVER_URL} />
               }
+            />
+            <Route
+              exact={true}
+              path={`/:id/final_survey`}
+              element={<FinalSurveyWithRouter server_url={SERVER_URL} />}
             />
             <Route
               exact={true}

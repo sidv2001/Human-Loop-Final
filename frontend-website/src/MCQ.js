@@ -10,7 +10,8 @@ class MCQ extends Component {
       question: this.props.config["question"],
       answer: null,
       time_taken: 0,
-      question_difficulty: this.props.config["question_difficulty"],
+      answer_complexity: this.props.config["answer_complexity"],
+      question_difficulty: this.props.question_difficulty,
       interval: this.props.interval,
       user_busyness: this.props.user_busyness,
     },
@@ -43,7 +44,7 @@ class MCQ extends Component {
       var copy = {};
       Object.assign(copy, this.state.form);
       this.props.update_results(copy);
-      this.props.set_display(false);
+      this.props.update_display();
     } else {
       const adapt_state = this.state;
       adapt_state.form.time_taken += 100;
@@ -92,7 +93,7 @@ class MCQ extends Component {
       return (
         <div>
           <Image
-            src={`../images/${this.props.config["context-source"]}.jpg`}
+            src={`../images/${this.props.config["context-source"]}.JPG`}
             fluid
           />
         </div>

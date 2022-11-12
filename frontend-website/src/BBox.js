@@ -10,7 +10,8 @@ class BBox extends Component {
       question: this.props.config["question"],
       answer: null,
       time_taken: 0,
-      question_difficulty: this.props.config["question_difficulty"],
+      answer_complexity: this.props.config["answer_complexity"],
+      question_difficulty: this.props.question_difficulty,
       interval: this.props.interval,
       user_busyness: this.props.user_busyness,
     },
@@ -43,7 +44,7 @@ class BBox extends Component {
       var copy = {};
       Object.assign(copy, this.state.form);
       this.props.update_results(copy);
-      this.props.set_display(false);
+      this.props.update_display();
     } else {
       const adapt_state = this.state;
       adapt_state.form.time_taken += 100;
@@ -80,8 +81,12 @@ class BBox extends Component {
     return (
       <div>
         <div>{this.props.config["question"]}</div>
+        <div>
+          If you feel like your bounding box is not correct, hover the top left
+          of the drawn box and click the x to delete your current box.{" "}
+        </div>
         <BBoxAnnotator
-          url={`../images/${this.props.config["context-source"]}.jpg`}
+          url={`../images/${this.props.config["context-source"]}.JPG`}
           inputMethod="select"
           labels={this.props.config["labels"]}
           onChange={(e) => this.update_answers(e)}

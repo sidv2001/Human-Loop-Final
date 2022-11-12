@@ -1,0 +1,655 @@
+[
+  {
+    "main-task": {
+      "interval": 600000,
+      "busyness": 0,
+      "questions": [],
+      "first survey": 331000,
+      "first question": 600000
+    },
+    "side-task": { "busyness": 1, "max_number": 100, "interval": 30000 }
+  },
+  {
+    "main-task": {
+      "interval": 600000,
+      "busyness": 0,
+      "questions": [],
+      "first survey": 331000,
+      "first question": 600000
+    },
+    "side-task": {
+      "busyness": 2,
+      "prompt": "Describe your favorite class in high school and why you enjoyed it"
+    }
+  },
+  {
+    "main-task": {
+      "interval": 600000,
+      "busyness": 0,
+      "questions": [],
+      "first survey": 531000,
+      "first question": 600000
+    },
+    "side-task": {
+      "busyness": 3,
+      "source": "https://www.youtube.com/embed/67gIQ_sBKTI?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com"
+    }
+  },
+  {
+    "main-task": {
+      "interval": 60000,
+      "busyness": 0,
+      "questions": [
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001047",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        },
+        {
+          "type": "bbox",
+          "context-source": "P1001137",
+          "question": "Draw a box around only the cantaloupe",
+          "labels": ["cantaloupe"],
+          "question_difficulty": 2
+        },
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001131",
+          "question": "What kind of food item is outlined in the image below",
+          "options": [
+            { "image": "None", "text": "Carrot", "id": "1" },
+            { "image": "None", "text": "Pineapple", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Apple", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001130",
+          "question": "What kind of food item is outlined in the image below",
+          "options": [
+            { "image": "None", "text": "Carrot", "id": "1" },
+            { "image": "None", "text": "Pineapple", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Kiwi", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001089",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        }
+      ],
+      "first survey": 91000,
+      "first question": 31000
+    },
+    "side-task": {
+      "busyness": 0
+    }
+  },
+
+  {
+    "main-task": {
+      "interval": 60000,
+      "busyness": 0,
+      "questions": [
+        {
+          "type": "bbox",
+          "context-source": "P1001137",
+          "question": "Draw a box around only the cantaloupe",
+          "labels": ["cantaloupe"],
+          "question_difficulty": 2
+        },
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001131",
+          "question": "What kind of food item is outlined in the image below",
+          "options": [
+            { "image": "None", "text": "Carrot", "id": "1" },
+            { "image": "None", "text": "Pineapple", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Apple", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001130",
+          "question": "What kind of food item is outlined in the image below",
+          "options": [
+            { "image": "None", "text": "Carrot", "id": "1" },
+            { "image": "None", "text": "Pineapple", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Kiwi", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001047",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        },
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001089",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 0
+    }
+  },
+
+  {
+    "main-task": {
+      "interval": 120000,
+      "busyness": 0,
+      "questions": [
+        {
+          "type": "bbox",
+          "context-source": "P1001133",
+          "question": "Draw a box around only the strawberry that is cut in half",
+          "labels": ["cantaloupe"],
+          "question_difficulty": 2
+        },
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001138",
+          "question": "What kind of food item is outlined in the image below",
+          "options": [
+            { "image": "None", "text": "Rasberry", "id": "1" },
+            { "image": "None", "text": "Strawberry", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Apple", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001081",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 0
+    }
+  },
+  {
+    "main-task": {
+      "interval": 180000,
+      "busyness": 0,
+      "questions": [
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001114",
+          "question": "What kind of food item is outlined in the image below",
+          "options": [
+            { "image": "None", "text": "Carrot", "id": "1" },
+            { "image": "None", "text": "Pineapple", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Cantaloupe", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001078",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 0
+    }
+  },
+
+  {
+    "main-task": {
+      "interval": 60000,
+      "busyness": 1,
+      "questions": [
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001121",
+          "question": "What kind of food item is outlined in the image below",
+          "options": [
+            { "image": "None", "text": "Peach", "id": "1" },
+            { "image": "None", "text": "Banana", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Apple", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+        {
+          "type": "bbox",
+          "context-source": "P1001120",
+          "question": "Draw a box around a slice of banana",
+          "labels": ["banana"],
+          "question_difficulty": 2
+        },
+
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001051",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        },
+        {
+          "type": "bbox",
+          "context-source": "P1001123",
+          "question": "Draw a box around a slice of grape",
+          "labels": ["grape"],
+          "question_difficulty": 2
+        },
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001098",
+          "question": "Why did the Robot fail in the acquiring the cantaloupe",
+          "question_difficulty": 3
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 1,
+      "max_number": 100,
+      "interval": 30000
+    }
+  },
+
+  {
+    "main-task": {
+      "interval": 120000,
+      "busyness": 1,
+      "questions": [
+        {
+          "type": "bbox",
+          "context-source": "P1001132",
+          "question": "Draw a box around only the slice of apple",
+          "labels": ["apple"],
+          "question_difficulty": 2
+        },
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001117",
+          "question": "What kind of food item is in the image below",
+          "options": [
+            { "image": "None", "text": "Rasberry", "id": "1" },
+            { "image": "None", "text": "Strawberry", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Apple", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001086",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 1,
+      "max_number": 100,
+      "interval": 30000
+    }
+  },
+  {
+    "main-task": {
+      "interval": 180000,
+      "busyness": 1,
+      "questions": [
+        {
+          "type": "bbox",
+          "context-source": "P1001119",
+          "question": "Draw a box around only the strawberry",
+          "labels": ["strawberry"],
+          "question_difficulty": 2
+        },
+
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001091",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 1,
+      "max_number": 100,
+      "interval": 30000
+    }
+  },
+
+  {
+    "main-task": {
+      "interval": 60000,
+      "busyness": 2,
+      "questions": [
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001116",
+          "question": "What kind of food item is outlined in the image below",
+          "options": [
+            { "image": "None", "text": "Peach", "id": "1" },
+            { "image": "None", "text": "Banana", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Apple", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+        {
+          "type": "bbox",
+          "context-source": "P1001115",
+          "question": "Draw a box around a slice of apple",
+          "labels": ["apple"],
+          "question_difficulty": 2
+        },
+
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001062",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        },
+        {
+          "type": "bbox",
+          "context-source": "P1001123",
+          "question": "Draw a box around a slice of cantaloupe",
+          "labels": ["cantaloupe"],
+          "question_difficulty": 2
+        },
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001110",
+          "question": "What kind of food item is outlined in the image below",
+          "options": [
+            { "image": "None", "text": "Blueberry", "id": "1" },
+            { "image": "None", "text": "Orange", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Rasberry", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 2,
+      "prompt": "Describe your least liked class in high school and why you disliked it",
+      "interval": 30000
+    }
+  },
+
+  {
+    "main-task": {
+      "interval": 120000,
+      "busyness": 2,
+      "questions": [
+        {
+          "type": "bbox",
+          "context-source": "P1001134",
+          "question": "Draw a box around only the cantaloupe",
+          "labels": ["cantaloupe"],
+          "question_difficulty": 2
+        },
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001137",
+          "question": "What kind of food item is in the image below",
+          "options": [
+            { "image": "None", "text": "Rasberry", "id": "1" },
+            { "image": "None", "text": "Strawberry", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Apple", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001058",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 2,
+      "prompt": "Describe what your favorite sport was and why you liked it"
+    }
+  },
+  {
+    "main-task": {
+      "interval": 180000,
+      "busyness": 2,
+      "questions": [
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001124",
+          "question": "What kind of food item is in the image below",
+          "options": [
+            { "image": "None", "text": "Rasberry", "id": "1" },
+            { "image": "None", "text": "Strawberry", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Apple", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+
+        {
+          "type": "bbox",
+          "context-source": "P1001127",
+          "question": "Draw a box around only the strawberry",
+          "labels": ["strawberry"],
+          "question_difficulty": 2
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 2,
+      "prompt": "Describe your least liked sport and why you dislike it"
+    }
+  },
+
+  {
+    "main-task": {
+      "interval": 60000,
+      "busyness": 3,
+      "questions": [
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001140",
+          "question": "What kind of food item is outlined in the image below",
+          "options": [
+            { "image": "None", "text": "Peach", "id": "1" },
+            { "image": "None", "text": "Banana", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Apple", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+        {
+          "type": "bbox",
+          "context-source": "P1001139",
+          "question": "Draw a box around a any one grape",
+          "labels": ["apple"],
+          "question_difficulty": 2
+        },
+
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001106",
+          "question": "Why did the Robot fail in the acquiring the banana",
+          "question_difficulty": 3
+        },
+        {
+          "type": "bbox",
+          "context-source": "P1001128",
+          "question": "Draw a box around any carrot",
+          "labels": ["carrot"],
+          "question_difficulty": 2
+        },
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001108",
+          "question": "What kind of food item is outlined in the image below",
+          "options": [
+            { "image": "None", "text": "Blueberry", "id": "1" },
+            { "image": "None", "text": "Orange", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Rasberry", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 3,
+      "source": "https://www.youtube.com/embed/-uMifw7_YGc?ecver=1&amp;iv_load_policy=3&amp;rel=0&amp;yt:stretch=16:9&amp;autohide=1&amp;color=red&amp;width=560&amp;width=560"
+    }
+  },
+
+  {
+    "main-task": {
+      "interval": 120000,
+      "busyness": 3,
+      "questions": [
+        {
+          "type": "bbox",
+          "context-source": "P1001111",
+          "question": "Draw a box around only the apple",
+          "labels": ["apple"],
+          "question_difficulty": 2
+        },
+        {
+          "type": "mcq",
+          "context-type": "image",
+          "context-source": "P1001109",
+          "question": "What kind of food item is in the image below",
+          "options": [
+            { "image": "None", "text": "Rasberry", "id": "1" },
+            { "image": "None", "text": "Strawberry", "id": "2" },
+            { "image": "None", "text": "Grapes", "id": "3" },
+            { "image": "None", "text": "Apple", "id": "4" },
+            { "image": "None", "text": "I dont know", "id": "5" }
+          ],
+          "question_difficulty": 1
+        },
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001057",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 3,
+      "source": "https://www.youtube.com/embed/x_YSfTlI8c0?ecver=1&amp;iv_load_policy=3&amp;rel=0&amp;yt:stretch=16:9&amp;autohide=1&amp;color=red&amp;width=560&amp;width=560"
+    }
+  },
+  {
+    "main-task": {
+      "interval": 180000,
+      "busyness": 3,
+      "questions": [
+        {
+          "type": "open-ended",
+          "context-type": "video",
+          "context-source": "P1001049",
+          "question": "Why did the Robot fail in the acquiring the food item",
+          "question_difficulty": 3
+        },
+
+        {
+          "type": "bbox",
+          "context-source": "P1001125",
+          "question": "Draw a box around only the banana",
+          "labels": ["banana"],
+          "question_difficulty": 2
+        }
+      ],
+      "first survey": 91000,
+      "first question": 30000
+    },
+    "side-task": {
+      "busyness": 3,
+      "source": "https://www.youtube.com/embed/NEzR-6FfeME?ecver=1&amp;iv_load_policy=3&amp;rel=0&amp;yt:stretch=16:9&amp;autohide=1&amp;color=red&amp;width=560&amp;width=560"
+    }
+  }
+]

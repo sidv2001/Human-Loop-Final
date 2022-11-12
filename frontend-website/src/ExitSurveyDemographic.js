@@ -11,8 +11,9 @@ export class ExitSurveyDemographic extends React.Component {
       "computer_prof",
       "feedback",
       "robots",
-      "wheelchair",
       "feeding",
+      "profession",
+      "multitask",
     ];
     this.state = {
       survey_results: {},
@@ -75,25 +76,9 @@ export class ExitSurveyDemographic extends React.Component {
               Required
             </h5>
             <Form>
-              <Form.Group controlId="wheelchair">
-                <Form.Label class="required_field">
-                  Do you have a disability or impairment that requires you to
-                  use a wheelchair?
-                </Form.Label>
-                <Form.Control
-                  onChange={(e) =>
-                    this.handleFormChange("wheelchair", e.target.value)
-                  }
-                  as="select"
-                >
-                  <option>Please Select</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </Form.Control>
-              </Form.Group>
               <Form.Group controlId="feeding">
                 <Form.Label class="required_field">
-                  Have you ever fed someone who has a disability or impairment?
+                  Have you ever fed someone else?
                 </Form.Label>
                 <Form.Control
                   onChange={(e) =>
@@ -104,6 +89,22 @@ export class ExitSurveyDemographic extends React.Component {
                   <option>Please Select</option>
                   <option>Yes</option>
                   <option>No</option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Group controlId="multitask">
+                <Form.Label class="required_field">
+                  How would you rate your ability to multitask?
+                </Form.Label>
+                <Form.Control
+                  onChange={(e) =>
+                    this.handleFormChange("multitask", e.target.value)
+                  }
+                  as="select"
+                >
+                  <option>Please Select</option>
+                  <option>Basic</option>
+                  <option>Intermediate</option>
+                  <option>Expert</option>
                 </Form.Control>
               </Form.Group>
               <Form.Group controlId="robots">
@@ -121,35 +122,43 @@ export class ExitSurveyDemographic extends React.Component {
                   <option>No</option>
                 </Form.Control>
               </Form.Group>
-              <Form.Group controlId="elaborate">
-                <Form.Label>
-                  If you are comfortable sharing, please elaborate on your
-                  answers to the above questions.
+              <Form.Group controlId="profession">
+                <Form.Label class="required_field">
+                  What is your work industry?
                 </Form.Label>
                 <Form.Control
                   onChange={(e) =>
-                    this.handleFormChange("elaborate", e.target.value)
+                    this.handleFormChange("profession", e.target.value)
                   }
-                />
+                  as="select"
+                >
+                  <option>Please Select</option>
+                  <option>Agriculture</option>
+                  <option>Administration</option>
+                  <option>Finance</option>
+                  <option>Entertainment</option>
+                  <option>Utilities</option>
+                  <option>Education</option>
+                  <option>Health care</option>
+                  <option>Information services</option>
+                  <option>Data processing</option>
+                  <option>Food services</option>
+                  <option>Hotel services</option>
+                  <option>Legal services</option>
+                  <option>Publishing</option>
+                  <option>Military</option>
+                  <option>Other</option>
+                </Form.Control>
               </Form.Group>
-              <br />
               <Form.Group controlId="age">
                 <Form.Label class="required_field">
                   What is your age?
                 </Form.Label>
                 <Form.Control
                   onChange={(e) => this.handleFormChange("age", e.target.value)}
-                  as="select"
-                >
-                  <option>Please Select</option>
-                  <option>0-15 years old</option>
-                  <option>15-30 years old</option>
-                  <option>30-45 years old</option>
-                  <option>45-60 years old</option>
-                  <option>60-75 years old</option>
-                  <option>75+</option>
-                  <option>Prefer Not to Answer</option>
-                </Form.Control>
+                  as="textarea"
+                  rows={1}
+                ></Form.Control>
               </Form.Group>
               <Form.Group controlId="gender">
                 <Form.Label class="required_field">
@@ -185,7 +194,6 @@ export class ExitSurveyDemographic extends React.Component {
                   <option>Not at all</option>
                   <option>Basic</option>
                   <option>Intermediate</option>
-                  <option>Advanced</option>
                   <option>Expert</option>
                 </Form.Control>
               </Form.Group>

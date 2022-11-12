@@ -11,7 +11,8 @@ class OpenEndedQ extends Component {
       question: this.props.config["question"],
       answer: null,
       time_taken: 0,
-      question_difficulty: this.props.config["question_difficulty"],
+      answer_complexity: this.props.config["answer_complexity"],
+      question_difficulty: this.props.question_difficulty,
       interval: this.props.interval,
       user_busyness: this.props.user_busyness,
     },
@@ -41,6 +42,10 @@ class OpenEndedQ extends Component {
   updateCurrentTime = () => {
     if (this.state.form.time_taken === 60000) {
       clearInterval(this.state.q_timer_id);
+      var copy = {};
+      Object.assign(copy, this.state.form);
+      this.props.update_results(copy);
+      this.props.update_display();
     } else {
       const adapt_state = this.state;
       adapt_state.form.time_taken += 100;
@@ -61,7 +66,6 @@ class OpenEndedQ extends Component {
 
   update_answers = (event) => {
     this.setAnswer(event.target.value);
-    this.props.update_results(this.state.form);
   };
 
   submitHandler = () => {
@@ -77,7 +81,7 @@ class OpenEndedQ extends Component {
       return (
         <div className="ratio ratio-16x9">
           <ReactPlayer
-            url={`../images/${this.props.config["context-source"]}.mp4`}
+            url={`../images/${this.props.config["context-source"]}.MP4`}
             width="100%"
             height="100%"
             controls
@@ -88,7 +92,7 @@ class OpenEndedQ extends Component {
       return (
         <div>
           <Image
-            src={`../images/${this.props.config["context-source"]}.jpg`}
+            src={`../images/${this.props.config["context-source"]}.JPG`}
             fluid
           />
         </div>
