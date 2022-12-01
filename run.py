@@ -110,8 +110,8 @@ class FlaskExample:
             return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
         app.debug = False
-        app.run(host='0.0.0.0', port=8194, threaded=True) #Change the server url to amazon ec2
-        # app.run(host='ec2-3-93-215-125.compute-1.amazonaws.com', port=8194, threaded=True)
+        #app.run(host='0.0.0.0', port=8194, threaded=True) #Change the server url to amazon ec2
+        app.run(host='ec2-54-209-65-119.compute-1.amazonaws.com', port=8194, threaded=True)
 
 
 if __name__ == '__main__':

@@ -109,7 +109,7 @@
         {
           "type": "mcq",
           "context-type": "image",
-          "context-source": "1001130",
+          "context-source": "P1001130",
           "question": "What kind of food item is outlined in the image below",
           "options": [
             { "image": "None", "text": "Carrot", "id": "1" },

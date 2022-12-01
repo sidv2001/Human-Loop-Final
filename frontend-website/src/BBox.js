@@ -80,17 +80,14 @@ class BBox extends Component {
   render() {
     return (
       <div>
-        <div>{this.props.config["question"]}</div>
-        <div>
-          If you feel like your bounding box is not correct, hover the top left
-          of the drawn box and click the x to delete your current box.{" "}
-        </div>
+        <div><strong>{this.props.config["question"]}</strong></div>
         <BBoxAnnotator
           url={`../images/${this.props.config["context-source"]}.JPG`}
           inputMethod="select"
           labels={this.props.config["labels"]}
           onChange={(e) => this.update_answers(e)}
         />
+	<div> If you do not like your box, hover the top left of the box and click the x to delete it </div>
         <Button variant="primary" type="submit" onClick={this.submitHandler}>
           Submit
         </Button>

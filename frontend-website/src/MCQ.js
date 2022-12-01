@@ -143,7 +143,7 @@ class MCQ extends Component {
           >
             <Form.Label>
               {this.displayContext()}
-              {this.props.config["question"]}
+             <strong> {this.props.config["question"]} </strong>
             </Form.Label>
             {this.listOptions()}
           </Form.Group>
