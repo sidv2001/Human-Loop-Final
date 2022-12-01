@@ -155,7 +155,7 @@ class OpenEndedQ extends Component {
           >
             <Form.Label>
               {this.displayContext()}
-              {this.props.config["question"]}
+              <strong>{this.props.config["question"]}</strong>
             </Form.Label>
             <Form.Control
               as="textarea"

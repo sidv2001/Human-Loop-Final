@@ -123,10 +123,8 @@ class BBox extends Component {
           Time remaining to submit this question: <br />
           <h4>{this.state.time_remaining}</h4>
         </div>
-        <div>{this.props.config["question"]}</div>
         <div>
-          If you feel like your bounding box is not correct, hover the top left
-          of the drawn box and click the x to delete your current box.{" "}
+          <strong>{this.props.config["question"]}</strong>
         </div>
         <BBoxAnnotator
           url={`../images/${this.props.config["context-source"]}.JPG`}
@@ -134,6 +132,11 @@ class BBox extends Component {
           labels={this.props.config["labels"]}
           onChange={(e) => this.update_answers(e)}
         />
+        <div>
+          {" "}
+          If you do not like your box, hover the top left of the box and click
+          the x to delete it{" "}
+        </div>
         <Button variant="primary" type="submit" onClick={this.submitHandler}>
           Submit
         </Button>

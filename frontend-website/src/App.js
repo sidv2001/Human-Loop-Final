@@ -37,8 +37,8 @@ function withRouter(Component) {
   return ComponentWithRouterProp;
 }
 
-const SERVER_URL = "http://0.0.0.0:8194/";
-// const SERVER_URL = "http://ec2-3-93-215-125.compute-1.amazonaws.com:8194/";
+//const SERVER_URL = "http://0.0.0.0:8194/";
+const SERVER_URL = "http://ec2-54-209-65-119.compute-1.amazonaws.com:8194/";
 
 function generateUserId() {
   return "_" + Math.random().toString(36).substr(2, 9);
