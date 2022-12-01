@@ -62,9 +62,9 @@ export class ExitSurveyDemographic extends React.Component {
   render() {
     return (
       <div id="survey">
-        <Modal size="xl" show={true} onHide={null}>
+        <Modal size="xl" show={true} onHide={null} fullscreen={true}>
           <Modal.Header>
-            <Modal.Title>Demographics</Modal.Title>
+            <Modal.Title>Demographic Survey</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <h5>
@@ -102,9 +102,11 @@ export class ExitSurveyDemographic extends React.Component {
                   as="select"
                 >
                   <option>Please Select</option>
-                  <option>Basic</option>
-                  <option>Intermediate</option>
-                  <option>Expert</option>
+                  <option>Very Bad</option>
+                  <option>Somewhat Bad</option>
+                  <option>Neither Good nor Bad</option>
+                  <option>Somewhat Good</option>
+                  <option>Very Good</option>
                 </Form.Control>
               </Form.Group>
               <Form.Group controlId="robots">
@@ -191,10 +193,11 @@ export class ExitSurveyDemographic extends React.Component {
                   as="select"
                 >
                   <option>Please Select</option>
-                  <option>Not at all</option>
-                  <option>Basic</option>
-                  <option>Intermediate</option>
-                  <option>Expert</option>
+                  <option>Very Bad</option>
+                  <option>Somewhat Bad</option>
+                  <option>Neither Good nor Bad</option>
+                  <option>Somewhat Good</option>
+                  <option>Very Good</option>
                 </Form.Control>
               </Form.Group>
               <Form.Group className="mb-3" controlId="feedback">

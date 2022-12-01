@@ -28,7 +28,7 @@ class DistractionTask extends Component {
 
   generateTask = () => {
     if (this.props.config["busyness"] === 0) {
-      return <div></div>;
+      return <div>There is no left-side task for this condition</div>;
     } else if (this.props.config["busyness"] === 1) {
       return (
         <RanNum

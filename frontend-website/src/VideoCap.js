@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ReactPlayer from "react-player";
 
 class VideoCap extends Component {
   state = {};
@@ -20,11 +21,12 @@ class VideoCap extends Component {
           <Form.Group className="mb-3" controlId={"Form.Question"}>
             <Form.Label>
               <div className="ratio ratio-16x9">
-                <iframe
-                  src={this.props.source}
-                  title="YouTube video"
-                  allowFullScreen
-                ></iframe>
+                <ReactPlayer
+                  url={`../images/${this.props.source}.MP4`}
+                  width="100%"
+                  height="100%"
+                  controls
+                />
               </div>
               <div>
                 Please transcribe what is said in the below video to the best of

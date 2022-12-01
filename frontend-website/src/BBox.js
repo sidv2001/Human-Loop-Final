@@ -16,6 +16,44 @@ class BBox extends Component {
       user_busyness: this.props.user_busyness,
     },
     q_timer_id: null,
+    time_remaining: "00:01:00",
+  };
+
+  setTimeRemaining = (time) => {
+    const adapt_state = this.state;
+    adapt_state.time_remaining = time;
+    this.setState({ adapt_state });
+  };
+
+  printTime = () => {
+    let { total, hours, minutes, seconds } = this.getTimeRemaining();
+    if (total >= 0) {
+      this.setTimeRemaining(
+        (hours > 9 ? hours : "0" + hours) +
+          ":" +
+          (minutes > 9 ? minutes : "0" + minutes) +
+          ":" +
+          (seconds > 9 ? seconds : "0" + seconds)
+      );
+    }
+  };
+
+  getTimeRemaining = () => {
+    const total = 60000 - this.state.form.time_taken;
+    var seconds = 0;
+    var minutes = 0;
+    var hours = 0;
+    if (total >= 0) {
+      seconds = Math.floor((total / 1000) % 60);
+      minutes = Math.floor((total / 1000 / 60) % 60);
+      hours = Math.floor((total / 1000 / 60 / 60) % 24);
+    }
+    return {
+      total,
+      hours,
+      minutes,
+      seconds,
+    };
   };
 
   setTimerId = (id) => {
@@ -49,6 +87,7 @@ class BBox extends Component {
       const adapt_state = this.state;
       adapt_state.form.time_taken += 100;
       this.setState({ adapt_state });
+      this.printTime();
     }
   };
 
@@ -80,6 +119,10 @@ class BBox extends Component {
   render() {
     return (
       <div>
+        <div>
+          Time remaining to submit this question: <br />
+          <h4>{this.state.time_remaining}</h4>
+        </div>
         <div>{this.props.config["question"]}</div>
         <div>
           If you feel like your bounding box is not correct, hover the top left

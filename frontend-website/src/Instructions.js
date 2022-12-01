@@ -39,7 +39,7 @@ class Instructions extends Component {
             Please answer all the questions before trying to submit{" "}
           </Alert.Heading>
           <p>
-            You have failed to answer one of the parts of the Pre-Study Survey.
+            You have not answered one of the parts of the Pre-Study Survey.
             Please answer it before moving on.
           </p>
         </Alert>
@@ -166,12 +166,16 @@ class Instructions extends Component {
                 <ListGroup as="ol" numbered>
                   <ListGroup.Item as="li">
                     From here you will be directed to a series of conditions. In
-                    total, you will complete 15 conditions..{" "}
+                    total, you will complete 15 conditions.{" "}
                   </ListGroup.Item>
                   <ListGroup.Item as="li">
                     After all the conditions, you will be asked to complete two
                     final surveys. You will then receive a code to submit on
-                    Amazon Mechanical Turk.{" "}
+                    Amazon Mechanical Turk. {"\n"}
+                    <b>
+                      You will NOT be paid unless you submit the completion code
+                      on Amazon Mechanical Turk.
+                    </b>{" "}
                   </ListGroup.Item>
                   <ListGroup.Item as="li">
                     On average, this task takes 90-100 minutes{" "}
@@ -182,9 +186,12 @@ class Instructions extends Component {
           </Card.Body>
         </Card>
         <Card style={{ width: "50rem" }}>
-          <Card.Title>Pre Study Stress Measurement</Card.Title>
+          <Card.Title>Pre Study Question</Card.Title>
           <Card.Text>
-            Before continuing please answer the question given below
+            Before continuing please answer the question given below:
+          </Card.Text>
+          <Card.Text>
+            <b>How stressed do you feel right now?</b>
           </Card.Text>
           <Card.Text>
             {this.getLikertQuestion("Stress", this.setStress, "Stressed")}

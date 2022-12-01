@@ -16,7 +16,7 @@ class StudyPage extends Component {
     super(props);
 
     this.state = {
-      timer: "00:05:32",
+      timer: "00:05:30",
       total_time: 332000,
       current_time: 0,
       study_order: parseInt(this.props.router.params.study_part_i),
@@ -34,6 +34,7 @@ class StudyPage extends Component {
       end_time: 0,
       end_timer_id: null,
       end_timer: "00:00:30",
+      survey_interval_id: null,
     };
   }
 
@@ -86,8 +87,30 @@ class StudyPage extends Component {
   };
 
   startSurvey = () => {
+    const id = setInterval(() => {
+      this.setDisplay(true);
+      this.pauseTimer();
+      clearInterval(this.state.survey_interval_id);
+      this.setSurveyTimerId(null);
+    }, 3000);
+    this.setSurveyTimerId(id);
+  };
+
+  setSurveyTimerId = (id) => {
+    const adapt_state = this.state;
+    adapt_state.survey_interval_id = id;
+    this.setState({ adapt_state });
+  };
+
+  setFinalSurvey = (val) => {
+    const adapt_state = this.state;
+    adapt_state.final_survey = val;
+    this.setState({ adapt_state });
+  };
+  startFinalSurvey = () => {
     this.setDisplay(true);
     this.pauseTimer();
+    this.setFinalSurvey(true);
   };
 
   setTimer = (time) => {
@@ -163,10 +186,15 @@ class StudyPage extends Component {
   };
 
   getTimeRemaining = () => {
-    const total = this.state.total_time - this.state.current_time;
-    const seconds = Math.floor((total / 1000) % 60);
-    const minutes = Math.floor((total / 1000 / 60) % 60);
-    const hours = Math.floor((total / 1000 / 60 / 60) % 24);
+    const total = 330000 - this.state.current_time;
+    var seconds = 0;
+    var minutes = 0;
+    var hours = 0;
+    if (total >= 0) {
+      seconds = Math.floor((total / 1000) % 60);
+      minutes = Math.floor((total / 1000 / 60) % 60);
+      hours = Math.floor((total / 1000 / 60 / 60) % 24);
+    }
     return {
       total,
       hours,
@@ -243,7 +271,7 @@ class StudyPage extends Component {
 
   updateSurveyCondition = () => {
     if (this.state.current_time === this.state.total_time - 1000) {
-      this.startSurvey();
+      this.startFinalSurvey();
     }
   };
 
@@ -266,18 +294,26 @@ class StudyPage extends Component {
                       </ListGroup.Item>
                       <ListGroup.Item as="li">
                         The left-side task will be present for the entire
-                        duration of the timer. The right-side task(s) will
-                        appear occasionally.
+                        duration of the timer{" "}
+                        {"(or there might not be a left-side task)"}. The
+                        right-side task(s) will appear occasionally.
                       </ListGroup.Item>
                       <ListGroup.Item as="li">
                         Your goal is to complete all the tasks as accurately as
-                        possible within the allotted time. You will NOT be paid
-                        if you don’t complete tasks accurately.
+                        possible within the allotted time.{" "}
+                        <b>
+                          You will NOT be paid if you don’t complete tasks
+                          accurately.
+                        </b>
                       </ListGroup.Item>
                       <ListGroup.Item as="li">
                         Periodically, you will be asked to complete a brief
-                        survey. You MUST complete the survey to proceed. The
-                        timer will be paused for the duration of the survey.
+                        survey. <b>You MUST complete the survey to proceed.</b>{" "}
+                        The timer will be paused for the duration of the survey.
+                      </ListGroup.Item>
+                      <ListGroup.Item as="li">
+                        You have completed{" "}
+                        <b>{this.state.study_order} out of 15 </b> conditions
                       </ListGroup.Item>
                     </ListGroup>
                   </div>
@@ -342,6 +378,7 @@ class StudyPage extends Component {
               update_results={this.updateSurvey}
               enabled={this.state.display_survey}
               current_survey={this.state.current_survey}
+              final={this.state.final_survey}
             ></Survey>
             <div className="container">
               <div className="row">

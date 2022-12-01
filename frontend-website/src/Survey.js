@@ -135,29 +135,63 @@ class Survey extends Component {
     }
   };
 
+  displayQuestion = () => {
+    if (this.props.final) {
+      return (
+        <React.Fragment>
+          Please answer the following questions on your cognitive workload over{" "}
+          <b>
+            the whole condition <br /> {"(The last 5 minutes and 30 seconds)"}
+          </b>
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          Please answer the following questions on your cognitive workload{" "}
+          <b>currently</b>
+        </React.Fragment>
+      );
+    }
+  };
+
   displayModal = () => {
+    const normal_likert = [
+      "Very High",
+      "Above Average",
+      "Average",
+      "Below Average",
+      "Very Low",
+    ];
+    const performance = [
+      "Excellent",
+      "Above Average",
+      "Average",
+      "Below Average",
+      "Very Poor",
+    ];
     return (
       <div>
         <Modal
           show={this.state.display_modal}
           backdrop="static"
           keyboard={false}
-          size="lg"
+          fullscreen={true}
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
           <Modal.Header>
             <Modal.Title>Cognitive Workload Survey</Modal.Title>
-            {this.displayAlert()}
+            {this.displayAlert()} <br />
           </Modal.Header>
           <Modal.Body>
-            <div>
-              Please tell us from a scale of 0 (very low) to 100 (very high),
-              how demanding your workload felt for the tasks you did:
-            </div>
+            <div>{this.displayQuestion()}</div>
+            <br />
+            <b>The timer is paused while you answer this survey </b>
             <br />
             <div>
               <Form>
+                <br />
                 <Form.Group as={Row}>
                   <Form.Label>
                     <b>Mental Demand</b>: {"\n"} How mentally demanding was the
@@ -166,8 +200,7 @@ class Survey extends Component {
                   {this.getLikertQuestion(
                     "Mental",
                     this.setMental,
-                    "Demanding",
-                    "Easy"
+                    normal_likert
                   )}
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -178,8 +211,7 @@ class Survey extends Component {
                   {this.getLikertQuestion(
                     "Temporal",
                     this.setTemporal,
-                    "Rushed",
-                    "Sedate"
+                    normal_likert
                   )}
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -190,8 +222,7 @@ class Survey extends Component {
                   {this.getLikertQuestion(
                     "Performance",
                     this.setPerformance,
-                    "Successful",
-                    "Unsuccessful"
+                    performance
                   )}
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -202,8 +233,7 @@ class Survey extends Component {
                   {this.getLikertQuestion(
                     "Effort",
                     this.setEffort,
-                    "Hard",
-                    "Little"
+                    normal_likert
                   )}
                 </Form.Group>
                 <Form.Group as={Row}>
@@ -214,8 +244,7 @@ class Survey extends Component {
                   {this.getLikertQuestion(
                     "Frustration",
                     this.setFrustration,
-                    "Frustrating",
-                    "Satisfying"
+                    normal_likert
                   )}
                 </Form.Group>
               </Form>
@@ -230,25 +259,25 @@ class Survey extends Component {
       </div>
     );
   };
-  getLikertQuestion(key, onChange, negWord, posWord) {
+  getLikertQuestion(key, onChange, words) {
     return (
       <React.Fragment>
         <div key="inline-radio">
           <div class="row align-items-center">
             <div class="col">
-              <Form.Check.Label>Very {negWord}</Form.Check.Label>
+              <Form.Check.Label>{words[0]}</Form.Check.Label>
             </div>
             <div class="col">
-              <Form.Check.Label>Somewhat {negWord}</Form.Check.Label>
+              <Form.Check.Label>{words[1]}</Form.Check.Label>
             </div>
             <div class="col">
-              <Form.Check.Label>Neutral</Form.Check.Label>
+              <Form.Check.Label>{words[2]}</Form.Check.Label>
             </div>
             <div class="col">
-              <Form.Check.Label>{posWord}</Form.Check.Label>
+              <Form.Check.Label>{words[3]}</Form.Check.Label>
             </div>
             <div class="col">
-              <Form.Check.Label>Very {posWord}</Form.Check.Label>
+              <Form.Check.Label>{words[4]}</Form.Check.Label>
             </div>
           </div>
           <div class="row align-items-center">

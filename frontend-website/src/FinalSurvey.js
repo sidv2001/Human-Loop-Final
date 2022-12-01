@@ -55,9 +55,9 @@ export class FinalSurvey extends React.Component {
   render() {
     return (
       <div id="survey">
-        <Modal size="xl" show={true} onHide={null}>
+        <Modal size="xl" show={true} onHide={null} fullscreen={true}>
           <Modal.Header>
-            <Modal.Title>Demographics</Modal.Title>
+            <Modal.Title>Final Survey</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <h5>
@@ -113,19 +113,16 @@ export class FinalSurvey extends React.Component {
               </Form.Group>
               <Form.Group className="mb-3" controlId="multitask_impact">
                 <Form.Label>
-                  Did multitasking affect your attention towards the left hand
-                  side task?
+                  How did multitasking affect your attention towards the left
+                  hand side task?
                 </Form.Label>
                 <Form.Control
-                  as="select"
+                  as="textarea"
+                  rows={3}
                   onChange={(e) =>
-                    this.handleFormChange("multitask_impact", e.target.value)
+                    this.handleFormChange("stress_factors", e.target.value)
                   }
-                >
-                  <option>Please Select</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </Form.Control>
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="right_task_impact">
                 <Form.Label>
@@ -139,7 +136,7 @@ export class FinalSurvey extends React.Component {
                   }
                 >
                   <option>Please Select</option>
-                  <option>MCQs</option>
+                  <option>Multiple Choice Questions</option>
                   <option>Bounding Boxes</option>
                   <option>Open Ended Questions</option>
                 </Form.Control>
@@ -158,16 +155,38 @@ export class FinalSurvey extends React.Component {
               </Form.Group>
               <Form.Group className="mb-3" controlId="perference">
                 <Form.Label>
-                  Imagine this robot helping you with a task. Would you prefer a
-                  robot that always successfully performs a task by asking you
-                  how to do the task every time or a robot that does not ask you
-                  all the time but occasionally fails? Please elaborate.{" "}
+                  In some of the tasks, you saw a robotic arm. Imagine this
+                  robot helping you with a task. Would you prefer: <br />
+                  <ul>
+                    <li>
+                      a robot that always successfully performs a task by asking
+                      you how to do the task every time
+                    </li>
+                    <li>
+                      a robot that does not ask you all the time but
+                      occasionally fails?
+                    </li>
+                  </ul>
+                  Please elaborate.{" "}
                 </Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={3}
                   onChange={(e) =>
                     this.handleFormChange("perference", e.target.value)
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="additional">
+                <Form.Label>
+                  Is there anything else you'd like to tell us? Feel free to
+                  elaborate on any of the above responses.{" "}
+                </Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  onChange={(e) =>
+                    this.handleFormChange("additional", e.target.value)
                   }
                 />
               </Form.Group>
