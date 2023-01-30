@@ -164,13 +164,16 @@ class OpenEndedQ extends Component {
             />
           </Form.Group>
           <Form.Text>
-            When answering this question, consider the following guidelines:
+            Some of the consideration for acquiring food items are:
             <ul>
-              <li>The angle of the fork relative to table</li>
-              <li>The location of the fork relative to the robot</li>
-              <li>The force applied by the fork</li>
+              <li>The angle of the fork</li>
+              <li>The location of the fork</li>
+              <li>How deep the fork should go inside the food item</li>
               <li>The direction of approach of the fork</li>
             </ul>
+            <br />
+            But feel free to let us know of any other considerations you have
+            that may affect the success of acquisition.
           </Form.Text>
           <Button variant="primary" type="submit" onClick={this.submitHandler}>
             Submit

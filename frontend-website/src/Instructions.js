@@ -178,7 +178,7 @@ class Instructions extends Component {
                     </b>{" "}
                   </ListGroup.Item>
                   <ListGroup.Item as="li">
-                    On average, this task takes 90-100 minutes{" "}
+                    On average, this task takes 100-120 minutes{" "}
                   </ListGroup.Item>
                 </ListGroup>
               </div>
