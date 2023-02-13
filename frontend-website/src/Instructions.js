@@ -200,6 +200,7 @@ class Instructions extends Component {
             </Card.Body>
           </Card.Body>
         </Card>
+        <br></br>
         <Card style={{ width: "50rem" }}>
           <Card.Title>Pre Study Question</Card.Title>
           <Card.Text>
