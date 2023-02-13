@@ -97,6 +97,7 @@ class MCQ extends Component {
     Object.assign(copy, this.state.form);
     this.props.update_results(copy);
     this.props.update_display();
+    this.state.completed = false;
   };
 
   displayContext = () => {
