@@ -35,7 +35,6 @@ class MainQuestions extends Component {
 
   updateResults = (question_results) => {
     this.setResults(question_results, this.state.current_question);
-    console.log(this.state.results);
     var copy = {};
     Object.assign(copy, this.state.results);
     this.props.update_results(copy);
@@ -57,17 +56,16 @@ class MainQuestions extends Component {
     if (!prevState.is_displayed) {
       if (
         prevState.when_to_display === nextProps.time &&
-        nextProps.time < 301000
+        nextProps.time < 303000
       ) {
         adapt_state.is_displayed = true;
-        adapt_state.last_call = prevState.when_to_display + 59000;
+        adapt_state.last_call = prevState.when_to_display + 60000;
         return adapt_state;
       }
     }
     return null;
   };
   updateDisplay = () => {
-    console.log("reached here");
     const adapt_state = this.state;
     adapt_state.is_displayed = false;
     adapt_state.current_question += 1;

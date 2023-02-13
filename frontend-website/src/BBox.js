@@ -74,6 +74,8 @@ class BBox extends Component {
     } else {
       printed_time = BBox.printTime(nextProps.time, nextProps.last_call);
       adapt_state.time_remaining = printed_time;
+      adapt_state.form.time_taken =
+        60000 - (nextProps.last_call - nextProps.time);
     }
     return adapt_state;
   };

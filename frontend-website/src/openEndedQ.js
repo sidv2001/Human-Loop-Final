@@ -14,9 +14,10 @@ class OpenEndedQ extends Component {
       question_difficulty: this.props.question_difficulty,
       interval: this.props.interval,
       user_busyness: this.props.user_busyness,
+      time_taken: 0,
     },
-    q_timer_id: null,
     time_remaining: "00:01:00",
+    completed: false,
   };
 
   static printTime = (time, last_call) => {
@@ -66,13 +67,12 @@ class OpenEndedQ extends Component {
     const adapt_state = prevState;
     var printed_time = "";
     if (nextProps.time === nextProps.last_call) {
-      var copy = {};
-      Object.assign(copy, prevState.form);
-      nextProps.update_results(copy);
-      nextProps.update_display();
+      adapt_state.completed = true;
     } else {
       printed_time = OpenEndedQ.printTime(nextProps.time, nextProps.last_call);
       adapt_state.time_remaining = printed_time;
+      adapt_state.form.time_taken =
+        60000 - (nextProps.last_call - nextProps.time);
     }
     return adapt_state;
   };
@@ -82,11 +82,11 @@ class OpenEndedQ extends Component {
   };
 
   submitHandler = () => {
-    clearInterval(this.state.q_timer_id);
     var copy = {};
     Object.assign(copy, this.state.form);
     this.props.update_results(copy);
     this.props.update_display();
+    this.state.completed = false;
   };
 
   displayContext = () => {
@@ -116,6 +116,9 @@ class OpenEndedQ extends Component {
   };
 
   render() {
+    if (this.state.completed === true) {
+      this.submitHandler();
+    }
     return (
       <div>
         <div>

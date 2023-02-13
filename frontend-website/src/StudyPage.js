@@ -45,6 +45,7 @@ class StudyPage extends Component {
     this.updateNextSurvey();
     this.restartTimer();
     this.setDisplay(false);
+    console.log(this.state.survey_results);
   };
 
   setDisplay = (truth) => {
@@ -60,8 +61,9 @@ class StudyPage extends Component {
   updateMain = (results) => {
     const adapt_state = this.state;
     adapt_state.main_task_results = results;
-    console.log("In Study page, question results put here");
+
     this.setState({ adapt_state });
+    console.log(this.state.main_task_results);
   };
 
   updateSide = (results) => {
