@@ -96,7 +96,7 @@ class RanNum extends Component {
         adapt_state.is_displayed = true;
         adapt_state.when_to_display += nextProps.interval;
         if (adapt_state.when_to_display > 300000) {
-          adapt_state.when_to_display = 400000;
+          adapt_state.when_to_display = 330000;
           adapt_state.final_question = true;
         }
       }
