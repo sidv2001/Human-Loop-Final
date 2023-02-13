@@ -18,6 +18,7 @@ class BBox extends Component {
     },
     q_timer_id: null,
     time_remaining: "00:01:00",
+    completed: false,
   };
 
   static printTime = (time, last_call) => {
@@ -67,10 +68,7 @@ class BBox extends Component {
     const adapt_state = prevState;
     var printed_time = "";
     if (nextProps.time === nextProps.last_call) {
-      var copy = {};
-      Object.assign(copy, prevState.form);
-      nextProps.update_results(copy);
-      nextProps.update_display();
+      adapt_state.completed = true;
     } else {
       printed_time = BBox.printTime(nextProps.time, nextProps.last_call);
       adapt_state.time_remaining = printed_time;
@@ -95,6 +93,9 @@ class BBox extends Component {
   };
 
   render() {
+    if (this.state.completed === true) {
+      this.submitHandler();
+    }
     return (
       <div>
         <div>
