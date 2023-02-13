@@ -292,12 +292,6 @@ class StudyPage extends Component {
                     the screen.
                     <ListGroup as="ol" numbered>
                       <ListGroup.Item as="li">
-                        There is one main timer (shown above) that tells you how
-                        much time is left in the condition. <br></br>
-                        Additionally, some questions have timers which indicate
-                        how much time you have to answer that specific question.
-                      </ListGroup.Item>
-                      <ListGroup.Item as="li">
                         The left-side task will be present for the entire
                         duration of the timer{" "}
                         {"(or there might not be a left-side task)"}.<br></br>{" "}
@@ -319,9 +313,15 @@ class StudyPage extends Component {
                         Your goal is to complete all the tasks as accurately as
                         possible within the allotted time. <br></br>
                         <b>
-                          You will NOT be paid if you don’t complete tasks
-                          accurately.
+                          You will NOT be paid if you don’t attempt to complete
+                          the tasks accurately.
                         </b>
+                      </ListGroup.Item>
+                      <ListGroup.Item as="li">
+                        There is one main timer (shown above) that tells you how
+                        much time is left in the condition. <br></br>
+                        Additionally, some questions have timers which indicate
+                        how much time you have to answer that specific question.
                       </ListGroup.Item>
                       <ListGroup.Item as="li">
                         Periodically, you will be asked to complete a brief

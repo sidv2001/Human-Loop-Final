@@ -141,7 +141,7 @@ class Survey extends Component {
         <React.Fragment>
           Please answer the following questions on your cognitive workload over{" "}
           <b>
-            this condition <br></br>(The last 5 minutes and 30 seconds)
+            the last condition <br></br>(The last 5 minutes and 30 seconds)
             <br />
           </b>
         </React.Fragment>

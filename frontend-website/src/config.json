@@ -34,14 +34,14 @@
           "type": "open-ended",
           "context-type": "video",
           "context-source": "1_1_0",
-          "question": "Why did the Robot fail in the acquiring the cantaloupe",
+          "question": "Why did the Robot fail in the acquiring the cantaloupe?",
           "answer_complexity": 3
         },
         {
           "type": "open-ended",
           "context-type": "video",
           "context-source": "1_1_0_2",
-          "question": "Why did the Robot fail in the acquiring the banana",
+          "question": "Why did the Robot fail in the acquiring the banana?",
           "answer_complexity": 3
         },
         {
@@ -55,7 +55,7 @@
           "type": "mcq",
           "context-type": "image",
           "context-source": "P1001131",
-          "question": "What kind of food item is outlined in the image below",
+          "question": "What kind of food item is outlined in the image below?",
           "options": [
             { "image": "None", "text": "Carrot", "id": "1" },
             { "image": "None", "text": "Pineapple", "id": "2" },
@@ -69,7 +69,7 @@
           "type": "mcq",
           "context-type": "image",
           "context-source": "P1001116",
-          "question": "What kind of food item is outlined in the image below",
+          "question": "What kind of food item is outlined in the image below?",
           "options": [
             { "image": "None", "text": "Strawberry", "id": "1" },
             { "image": "None", "text": "Banana", "id": "2" },
@@ -96,7 +96,7 @@
           "type": "open-ended",
           "context-type": "video",
           "context-source": "1_2_0",
-          "question": "Why did the Robot fail in the acquiring the banana",
+          "question": "Why did the Robot fail in the acquiring the banana?",
           "answer_complexity": 3
         },
         {
@@ -110,7 +110,7 @@
           "type": "mcq",
           "context-type": "image",
           "context-source": "P1001130",
-          "question": "What kind of food item is outlined in the image below",
+          "question": "What kind of food item is outlined in the image below?",
           "options": [
             { "image": "None", "text": "Carrot", "id": "1" },
             { "image": "None", "text": "Pineapple", "id": "2" },
@@ -229,14 +229,14 @@
           "type": "open-ended",
           "context-type": "video",
           "context-source": "1_1_1_2",
-          "question": "Why did the Robot fail in the acquiring the carrot",
+          "question": "Why did the Robot fail in the acquiring the carrot?",
           "answer_complexity": 3
         },
         {
           "type": "open-ended",
           "context-type": "video",
           "context-source": "1_1_1",
-          "question": "Why did the Robot fail in the acquiring the strawberry",
+          "question": "Why did the Robot fail in the acquiring the strawberry?",
           "answer_complexity": 3
         },
         {
@@ -250,7 +250,7 @@
           "type": "mcq",
           "context-type": "image",
           "context-source": "P1001121",
-          "question": "What kind of food item is outlined in the image below",
+          "question": "What kind of food item is outlined in the image below?",
           "options": [
             { "image": "None", "text": "Peach", "id": "1" },
             { "image": "None", "text": "Banana", "id": "2" },
@@ -264,7 +264,7 @@
           "type": "mcq",
           "context-type": "image",
           "context-source": "P1001110",
-          "question": "What kind of food item is outlined in the image below",
+          "question": "What kind of food item is outlined in the image below?",
           "options": [
             { "image": "None", "text": "Blueberry", "id": "1" },
             { "image": "None", "text": "Orange", "id": "2" },
@@ -293,7 +293,7 @@
           "type": "open-ended",
           "context-type": "video",
           "context-source": "1_2_1",
-          "question": "Why did the Robot fail in the acquiring the banana",
+          "question": "Why did the Robot fail in the acquiring the banana?",
           "answer_complexity": 3
         },
         {
@@ -307,7 +307,7 @@
           "type": "mcq",
           "context-type": "image",
           "context-source": "P1001138",
-          "question": "What kind of food item is outlined in the image below",
+          "question": "What kind of food item is outlined in the image below?",
           "options": [
             { "image": "None", "text": "Rasberry", "id": "1" },
             { "image": "None", "text": "Strawberry", "id": "2" },
@@ -437,7 +437,7 @@
           "type": "open-ended",
           "context-type": "video",
           "context-source": "1_1_2",
-          "question": "Why did the Robot fail in the acquiring the cantaloupe",
+          "question": "Why did the Robot fail in the acquiring the cantaloupe?",
           "answer_complexity": 3
         },
         {
@@ -458,7 +458,7 @@
           "type": "mcq",
           "context-type": "image",
           "context-source": "P1001114",
-          "question": "What kind of food item is outlined in the image below",
+          "question": "What kind of food item is outlined in the image below?",
           "options": [
             { "image": "None", "text": "Carrot", "id": "1" },
             { "image": "None", "text": "Pineapple", "id": "2" },
@@ -472,7 +472,7 @@
           "type": "mcq",
           "context-type": "image",
           "context-source": "P1001137",
-          "question": "What kind of food item is outlined in the image below",
+          "question": "What kind of food item is outlined in the image below?",
           "options": [
             { "image": "None", "text": "Carrot", "id": "1" },
             { "image": "None", "text": "Cantaloupe", "id": "2" },
@@ -500,7 +500,7 @@
           "type": "open-ended",
           "context-type": "video",
           "context-source": "1_2_2",
-          "question": "Why did the Robot fail in the acquiring the grape",
+          "question": "Why did the Robot fail in the acquiring the grape?",
           "answer_complexity": 3
         },
         {
@@ -555,7 +555,7 @@
         {
           "type": "bbox",
           "context-source": "P1001139",
-          "question": "Draw a box around only the Grape that is closest to the center of the plate ",
+          "question": "Draw a box around only the Grape that is closest to the center of the plate?",
           "labels": ["Grape"],
           "answer_complexity": 2
         },

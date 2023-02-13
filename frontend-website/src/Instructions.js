@@ -157,19 +157,25 @@ class Instructions extends Component {
         {this.displayAlert()}
         <Card style={{ width: "60rem" }}>
           <Card.Body>
-            <Card.Title>Cognitive Workload of Multitasking Survey</Card.Title>
+            <Card.Title>Cognitive Workload of Multitasking Study</Card.Title>
             <Card.Body>
               <div class="justify-content-left">
                 <div class="justify-content-left">
-                  For this HIT you will be asked to complete multiple tasks
+                  For this study you will be asked to complete multiple tasks
                   simultaneously and fill out questionnaires about your
-                  cognitive workload during these tasks. {"\n"}{" "}
+                  cognitive workload during these tasks.<br></br> Through this
+                  study we are interested in studying the impact of the
+                  different tasks and when they are presented and how they
+                  impact a person's cognitive workload. Each condition will show
+                  you a slightly differnt combination of tasks and tasks timings
+                  to study each individual factor.{" "}
                 </div>
                 <ListGroup as="ol" numbered>
                   <ListGroup.Item as="li">
-                    In this task you will complete 14 conditions that are 5
-                    minutes and 30 seconds long. <br></br>You will be asked to
-                    complete two different tasks on either side of your screen{" "}
+                    In this study you will complete 14 conditions that are 5
+                    minutes and 30 seconds long. <br></br>In each{" "}
+                    <b>condition</b>, you will be asked to complete two
+                    different <b>tasks</b> on either side of your screen{" "}
                   </ListGroup.Item>
                   <ListGroup.Item as="li">
                     For each condition we want you to do these tasks while
