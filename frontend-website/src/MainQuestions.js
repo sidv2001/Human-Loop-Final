@@ -104,6 +104,8 @@ class MainQuestions extends Component {
               user_busyness={this.props.config["busyness"]}
               question_difficulty={this.props.config["question_difficulty"]}
               interval={this.props.config["interval"]}
+              time={this.props.time}
+              last_call={this.state.last_call}
             ></OpenEndedQ>
           </div>
         );
@@ -127,6 +129,8 @@ class MainQuestions extends Component {
               user_busyness={this.props.config["busyness"]}
               question_difficulty={this.props.config["question_difficulty"]}
               interval={this.props.config["interval"]}
+              time={this.props.time}
+              last_call={this.state.last_call}
             ></MCQ>
           </div>
         );
@@ -150,6 +154,8 @@ class MainQuestions extends Component {
               user_busyness={this.props.config["busyness"]}
               question_difficulty={this.props.config["question_difficulty"]}
               interval={this.props.config["interval"]}
+              time={this.props.time}
+              last_call={this.state.last_call}
             ></BBox>
           </div>
         );

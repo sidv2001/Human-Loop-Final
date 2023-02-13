@@ -280,27 +280,44 @@ class StudyPage extends Component {
       return (
         <div>
           <div class="row justify-content-center">
-            <Card style={{ width: "60rem" }}>
+            <Card style={{ width: "80rem" }}>
               <Card.Body>
-                <Card.Title>Instructions</Card.Title>
-                <Card.Text class="row justify-content-left">
+                <Card.Title>
+                  Condition {this.state.study_order} out of 14 Instructions
+                </Card.Title>
+                <Card.Text class="justify-content-left">
                   <div>
-                    You’ll be completing two tasks, one on the left-side of the
-                    screen and one on the right-side of the screen.
+                    In this <b>condition</b> be completing <b>two tasks</b>, one
+                    on the left-side of the screen and one on the right-side of
+                    the screen.
                     <ListGroup as="ol" numbered>
                       <ListGroup.Item as="li">
-                        You have 5 minutes and 30 seconds to complete the tasks.
-                        A timer (above) will display remaining time
+                        There is one main timer (shown above) that tells you how
+                        much time is left in the condition. <br></br>
+                        Additionally, some questions have timers which indicate
+                        how much time you have to answer that specific question.
                       </ListGroup.Item>
                       <ListGroup.Item as="li">
                         The left-side task will be present for the entire
                         duration of the timer{" "}
-                        {"(or there might not be a left-side task)"}. The
-                        right-side task(s) will appear occasionally.
+                        {"(or there might not be a left-side task)"}.<br></br>{" "}
+                        The right-side task(s) will appear occasionally.
+                      </ListGroup.Item>
+                      <ListGroup.Item as="li">
+                        You will be asked two types of surveys during the
+                        condition. <br></br>The first will be asked
+                        intermittently between your tasks about your{" "}
+                        <b>current cognitive workload</b>. <br></br>
+                        The second will be asked at the end of the condition,
+                        about your{" "}
+                        <b>
+                          average cognitive workload throughout the condition
+                        </b>{" "}
+                        (the last 5.5 minutes)
                       </ListGroup.Item>
                       <ListGroup.Item as="li">
                         Your goal is to complete all the tasks as accurately as
-                        possible within the allotted time.{" "}
+                        possible within the allotted time. <br></br>
                         <b>
                           You will NOT be paid if you don’t complete tasks
                           accurately.
@@ -309,11 +326,8 @@ class StudyPage extends Component {
                       <ListGroup.Item as="li">
                         Periodically, you will be asked to complete a brief
                         survey. <b>You MUST complete the survey to proceed.</b>{" "}
+                        <br></br>
                         The timer will be paused for the duration of the survey.
-                      </ListGroup.Item>
-                      <ListGroup.Item as="li">
-                        You have completed{" "}
-                        <b>{this.state.study_order} out of 15 </b> conditions
                       </ListGroup.Item>
                     </ListGroup>
                   </div>

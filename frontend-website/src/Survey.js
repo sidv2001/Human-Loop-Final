@@ -141,7 +141,8 @@ class Survey extends Component {
         <React.Fragment>
           Please answer the following questions on your cognitive workload over{" "}
           <b>
-            the whole condition <br /> {"(The last 5 minutes and 30 seconds)"}
+            this condition <br></br>(The last 5 minutes and 30 seconds)
+            <br />
           </b>
         </React.Fragment>
       );
@@ -149,7 +150,9 @@ class Survey extends Component {
       return (
         <React.Fragment>
           Please answer the following questions on your cognitive workload{" "}
-          <b>currently</b>
+          <b>
+            currently <br></br>(the last 1.5 minutes)
+          </b>
         </React.Fragment>
       );
     }

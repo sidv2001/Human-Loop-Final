@@ -29,8 +29,16 @@ class VideoCap extends Component {
                 />
               </div>
               <div>
-                Please transcribe what is said in the below video to the best of
-                your abilities.
+                <b>
+                  Please transcribe what is said in the above video to the best
+                  of your abilities.
+                </b>
+                <br></br>
+                You have the whole 5 and a half minutes of this condition to
+                complete this task. Once you have compelted the task wait for
+                the condition to finish. The transcript will upload
+                automatically. You must click the play button to start the
+                video.
               </div>
             </Form.Label>
             <Form.Control

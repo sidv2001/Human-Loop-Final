@@ -155,34 +155,43 @@ class Instructions extends Component {
     return (
       <div class="row justify-content-center">
         {this.displayAlert()}
-        <Card style={{ width: "50rem" }}>
+        <Card style={{ width: "60rem" }}>
           <Card.Body>
             <Card.Title>Cognitive Workload of Multitasking Survey</Card.Title>
-            <Card.Text>
+            <Card.Body>
               <div class="justify-content-left">
-                For this HIT you will be asked to complete multiple tasks
-                simultaneously and fill out questionnaires about your workload
-                during these tasks.
+                <div class="justify-content-left">
+                  For this HIT you will be asked to complete multiple tasks
+                  simultaneously and fill out questionnaires about your
+                  cognitive workload during these tasks. {"\n"}{" "}
+                </div>
                 <ListGroup as="ol" numbered>
                   <ListGroup.Item as="li">
-                    From here you will be directed to a series of conditions. In
-                    total, you will complete 15 conditions.{" "}
+                    In this task you will complete 14 conditions that are 5
+                    minutes and 30 seconds long. <br></br>You will be asked to
+                    complete two different tasks on either side of your screen{" "}
+                  </ListGroup.Item>
+                  <ListGroup.Item as="li">
+                    For each condition we want you to do these tasks while
+                    keeping in mind your cognitive workload while doing these
+                    tasks and how difficult or easy they are currently, and
+                    relative to other conditions.{" "}
                   </ListGroup.Item>
                   <ListGroup.Item as="li">
                     After all the conditions, you will be asked to complete two
-                    final surveys. You will then receive a code to submit on
-                    Amazon Mechanical Turk. {"\n"}
+                    final questionnaires. <br></br>
+                    You will then receive a code to submit on Amazon Mechanical
+                    Turk.
+                  </ListGroup.Item>
+                  <ListGroup.Item as="li">
                     <b>
                       You will NOT be paid unless you submit the completion code
                       on Amazon Mechanical Turk.
                     </b>{" "}
                   </ListGroup.Item>
-                  <ListGroup.Item as="li">
-                    On average, this task takes 100-120 minutes{" "}
-                  </ListGroup.Item>
                 </ListGroup>
               </div>
-            </Card.Text>
+            </Card.Body>
           </Card.Body>
         </Card>
         <Card style={{ width: "50rem" }}>

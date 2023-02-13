@@ -10,7 +10,6 @@ class OpenEndedQ extends Component {
     form: {
       question: this.props.config["question"],
       answer: null,
-      time_taken: 0,
       answer_complexity: this.props.config["answer_complexity"],
       question_difficulty: this.props.question_difficulty,
       interval: this.props.interval,
@@ -20,27 +19,26 @@ class OpenEndedQ extends Component {
     time_remaining: "00:01:00",
   };
 
-  setTimeRemaining = (time) => {
-    const adapt_state = this.state;
-    adapt_state.time_remaining = time;
-    this.setState({ adapt_state });
-  };
-
-  printTime = () => {
-    let { total, hours, minutes, seconds } = this.getTimeRemaining();
+  static printTime = (time, last_call) => {
+    let { total, hours, minutes, seconds } = this.getTimeRemaining(
+      time,
+      last_call
+    );
     if (total >= 0) {
-      this.setTimeRemaining(
+      return (
         (hours > 9 ? hours : "0" + hours) +
-          ":" +
-          (minutes > 9 ? minutes : "0" + minutes) +
-          ":" +
-          (seconds > 9 ? seconds : "0" + seconds)
+        ":" +
+        (minutes > 9 ? minutes : "0" + minutes) +
+        ":" +
+        (seconds > 9 ? seconds : "0" + seconds)
       );
+    } else {
+      return "00:00:00";
     }
   };
 
-  getTimeRemaining = () => {
-    const total = 60000 - this.state.form.time_taken;
+  static getTimeRemaining = (time, last_call) => {
+    const total = last_call - time;
     var seconds = 0;
     var minutes = 0;
     var hours = 0;
@@ -57,19 +55,6 @@ class OpenEndedQ extends Component {
     };
   };
 
-  setTimerId = (id) => {
-    const adapt_state = this.state;
-    adapt_state.q_timer_id = id;
-    this.setState({ adapt_state });
-  };
-
-  setTimer = (time) => {
-    const adapt_state = this.state;
-    adapt_state.form.time_taken = time;
-
-    this.setState({ adapt_state });
-  };
-
   setAnswer = (ans) => {
     const adapt_state = this.state;
     adapt_state.form.answer = ans;
@@ -77,30 +62,19 @@ class OpenEndedQ extends Component {
     this.setState({ adapt_state });
   };
 
-  updateCurrentTime = () => {
-    if (this.state.form.time_taken === 60000) {
-      clearInterval(this.state.q_timer_id);
+  static getDerivedStateFromProps = (nextProps, prevState) => {
+    const adapt_state = prevState;
+    var printed_time = "";
+    if (nextProps.time === nextProps.last_call) {
       var copy = {};
-      Object.assign(copy, this.state.form);
-      this.props.update_results(copy);
-      this.props.update_display();
+      Object.assign(copy, prevState.form);
+      nextProps.update_results(copy);
+      nextProps.update_display();
     } else {
-      const adapt_state = this.state;
-      adapt_state.form.time_taken += 100;
-      this.setState({ adapt_state });
-      this.printTime();
+      printed_time = OpenEndedQ.printTime(nextProps.time, nextProps.last_call);
+      adapt_state.time_remaining = printed_time;
     }
-  };
-
-  startTimer = () => {
-    const id = setInterval(() => {
-      this.updateCurrentTime();
-    }, 100);
-    this.setTimerId(id);
-  };
-
-  componentDidMount = () => {
-    this.startTimer();
+    return adapt_state;
   };
 
   update_answers = (event) => {
@@ -173,7 +147,7 @@ class OpenEndedQ extends Component {
             </ul>
             <br />
             But feel free to let us know of any other considerations you have
-            that may affect the success of acquisition.
+            that may affect the success of acquisition. <br></br>
           </Form.Text>
           <Button variant="primary" type="submit" onClick={this.submitHandler}>
             Submit

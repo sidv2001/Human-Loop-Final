@@ -21,10 +21,9 @@ class RanNum extends Component {
     current_question_number: 0,
     is_displayed: false,
     when_to_display: 2000,
-    end_time: 0,
-    end_timer_id: null,
+    final_question: false,
     end_timer: "00:00:30",
-    start_timer: false,
+    end_time: 0,
   };
 
   static getRandomInt(max) {
@@ -38,21 +37,8 @@ class RanNum extends Component {
     this.setState({ adapt_state });
   };
 
-  startEndTimer = () => {
-    const id = setInterval(() => {
-      this.updateEndTime();
-    }, 1000);
-    const adapt_state = this.state;
-    adapt_state.end_time = 0;
-    adapt_state.end_timer = "00:00:30";
-    adapt_state.end_timer_id = id;
-    adapt_state.start_timer = false;
-
-    this.setState({ adapt_state });
-  };
-
-  getEndTimeRemaining = () => {
-    const total = 30000 - this.state.end_time;
+  static getTimeRemaining = (time, last_call) => {
+    const total = last_call - time;
     const seconds = Math.floor((total / 1000) % 60);
     const minutes = Math.floor((total / 1000 / 60) % 60);
     const hours = Math.floor((total / 1000 / 60 / 60) % 24);
@@ -64,42 +50,22 @@ class RanNum extends Component {
     };
   };
 
-  printEndTime = () => {
-    let { total, hours, minutes, seconds } = this.getEndTimeRemaining();
+  static printTime = (time, last_call) => {
+    let { total, hours, minutes, seconds } = this.getTimeRemaining(
+      time,
+      last_call
+    );
     if (total >= 0) {
-      this.setEndTimer(
+      return (
         (hours > 9 ? hours : "0" + hours) +
-          ":" +
-          (minutes > 9 ? minutes : "0" + minutes) +
-          ":" +
-          (seconds > 9 ? seconds : "0" + seconds)
+        ":" +
+        (minutes > 9 ? minutes : "0" + minutes) +
+        ":" +
+        (seconds > 9 ? seconds : "0" + seconds)
       );
+    } else {
+      return "00:00:00";
     }
-  };
-  updateEndTime = () => {
-    const adapt_state = this.state;
-    adapt_state.end_time += 1000;
-    this.setState({ adapt_state });
-    this.printEndTime();
-    console.log(this.state.end_time);
-  };
-  setEndTimer = (time) => {
-    const adapt_state = this.state;
-    adapt_state.end_timer = time;
-
-    this.setState({ adapt_state });
-  };
-  setEndTime = (time) => {
-    const adapt_state = this.state;
-    adapt_state.end_time = time;
-
-    this.setState({ adapt_state });
-  };
-
-  setEndTimerId = (time) => {
-    const adapt_state = this.state;
-    adapt_state.end_timer_id = time;
-    this.setState({ adapt_state });
   };
 
   submitHandler = () => {
@@ -124,16 +90,15 @@ class RanNum extends Component {
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     const adapt_state = prevState;
+    var printed_time = "";
     if (!prevState.is_displayed) {
       if (prevState.when_to_display === nextProps.time) {
         adapt_state.is_displayed = true;
-        console.log(adapt_state, "reached false after submit loop");
         adapt_state.when_to_display += nextProps.interval;
         if (adapt_state.when_to_display > 300000) {
           adapt_state.when_to_display = 400000;
+          adapt_state.final_question = true;
         }
-        adapt_state.start_timer = true;
-        return adapt_state;
       }
     } else {
       if (prevState.when_to_display - 1000 === nextProps.time) {
@@ -158,18 +123,61 @@ class RanNum extends Component {
           question_answers: adapt_state.question_answers,
           time_taken: adapt_state.time_taken,
         });
-        console.log("reached inner loop");
-        return adapt_state;
       }
     }
-    return null;
+    printed_time = RanNum.printTime(nextProps.time, prevState.when_to_display);
+    adapt_state.end_timer = printed_time;
+    adapt_state.end_time =
+      nextProps.time - prevState.when_to_display + nextProps.interval;
+    return adapt_state;
+  };
+
+  print_inbw_timer = () => {
+    if (this.state.final_question) {
+      return (
+        <div>
+          {" "}
+          <h4>This was the final question </h4>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          A new question will appear in 30 seconds. <br />
+          Time Remaining before next question:
+          <br />
+          <h4>{this.state.end_timer}</h4>
+        </div>
+      );
+    }
+  };
+  print_during_timer = () => {
+    if (this.state.final_question) {
+      return (
+        <div>
+          {" "}
+          Please add the below numbers. A new question will appear in 30
+          seconds. <br />
+          <h4>This is the final question </h4>
+          Time Remaining to complete this question:
+          <br />
+          <h4>{this.state.end_timer}</h4>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {" "}
+          Please add the below numbers. A new question will appear in 30
+          seconds. <br />
+          Time Remaining before next question:
+          <br />
+          <h4>{this.state.end_timer}</h4>
+        </div>
+      );
+    }
   };
   render() {
-    if (this.state.start_timer) {
-      clearInterval(this.state.end_timer_id);
-      this.setEndTimerId(null);
-      this.startEndTimer();
-    }
     if (this.state.is_displayed) {
       return (
         <div>
@@ -178,12 +186,7 @@ class RanNum extends Component {
             <Form.Group className="mb-3" controlId={"Form.Question"}>
               <Form.Label>
                 <div>
-                  {" "}
-                  Please add the below numbers. A new question will appear in 30
-                  seconds. <br />
-                  Time Remaining before next question:
-                  <br />
-                  <h4>{this.state.end_timer}</h4>
+                  {this.print_during_timer()}
                   <h4>
                     {" "}
                     {this.state.current_question[0]}{" "}
@@ -210,15 +213,7 @@ class RanNum extends Component {
         </div>
       );
     } else {
-      return (
-        <div>
-          Please add the below numbers. A new question will appear in 30
-          seconds. <br />
-          Time Remaining before next question:
-          <br />
-          <h4>{this.state.end_timer}</h4>
-        </div>
-      );
+      return this.print_inbw_timer();
     }
   }
 }
