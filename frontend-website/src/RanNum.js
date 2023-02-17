@@ -92,7 +92,10 @@ class RanNum extends Component {
     const adapt_state = prevState;
     var printed_time = "";
     if (!prevState.is_displayed) {
-      if (prevState.when_to_display === nextProps.time) {
+      if (
+        prevState.when_to_display === nextProps.time &&
+        adapt_state.when_to_display < 304000
+      ) {
         adapt_state.is_displayed = true;
         adapt_state.when_to_display += nextProps.interval;
         if (adapt_state.when_to_display > 300000) {
@@ -143,7 +146,7 @@ class RanNum extends Component {
     } else {
       return (
         <div>
-          A new question will appear in 30 seconds. <br />
+          A new question will appear every 30 seconds. <br />
           Time Remaining before next question:
           <br />
           <h4>{this.state.end_timer}</h4>
@@ -156,7 +159,7 @@ class RanNum extends Component {
       return (
         <div>
           {" "}
-          Please add the below numbers. A new question will appear in 30
+          Please add the below numbers. A new question will appear every 30
           seconds. <br />
           <h4>This is the final question </h4>
           Time Remaining to complete this question:
