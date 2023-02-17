@@ -163,12 +163,12 @@ class Instructions extends Component {
                 <div class="justify-content-left">
                   For this study you will be asked to complete multiple tasks
                   simultaneously and fill out questionnaires about your
-                  cognitive workload during these tasks.<br></br> Through this
-                  study we are interested in studying the impact of the
-                  different tasks and when they are presented and how they
-                  impact a person's cognitive workload. Each condition will show
-                  you a slightly differnt combination of tasks and tasks timings
-                  to study each individual factor.{" "}
+                  cognitive workload during these tasks.<br></br>
+                  <br></br> Through this study we are interested in studying the
+                  impact of the different tasks and when they are presented on a
+                  person's cognitive workload. Each condition will show you a
+                  slightly differnt combination of tasks and tasks timings to
+                  study each individual factor.{" "}
                 </div>
                 <ListGroup as="ol" numbered>
                   <ListGroup.Item as="li">

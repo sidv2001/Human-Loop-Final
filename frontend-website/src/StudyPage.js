@@ -285,13 +285,13 @@ class StudyPage extends Component {
             <Card style={{ width: "80rem" }}>
               <Card.Body>
                 <Card.Title>
-                  Condition {this.state.study_order} out of 14 Instructions
+                  Condition {this.state.study_order + 1} out of 14 Instructions
                 </Card.Title>
                 <Card.Text class="justify-content-left">
                   <div>
-                    In this <b>condition</b> be completing <b>two tasks</b>, one
-                    on the left-side of the screen and one on the right-side of
-                    the screen.
+                    In this <b>condition</b> you will be completing{" "}
+                    <b>two tasks</b>, one on the left-side of the screen and one
+                    on the right-side of the screen.
                     <ListGroup as="ol" numbered>
                       <ListGroup.Item as="li">
                         The left-side task will be present for the entire
