@@ -83,7 +83,7 @@ function App() {
             />
             <Route
               path="/:id/instructions"
-              element={<InstructionsWithRouter />}
+              element={<InstructionsWithRouter server_url={SERVER_URL} />}
             />
             <Route
               exact={true}

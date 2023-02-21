@@ -13,7 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 class Instructions extends Component {
   state = {
-    id: this.props.router.user_id,
+    id: this.props.router.params.id,
     stress_level: null,
     display_alert: false,
   };
