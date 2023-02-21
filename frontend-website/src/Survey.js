@@ -176,13 +176,14 @@ class Survey extends Component {
   };
   displayTitle = () => {
     if (this.props.final) {
-      return <React.Fragment>Current Cognitive Workload Survey</React.Fragment>;
-    } else {
       return (
         <React.Fragment>
-          Average Condition Cognitive Workload Survey
+          {" "}
+          Average Condition Cognitive Workload Survey{" "}
         </React.Fragment>
       );
+    } else {
+      return <React.Fragment>Current Cognitive Workload Survey</React.Fragment>;
     }
   };
 
