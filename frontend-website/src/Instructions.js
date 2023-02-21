@@ -60,7 +60,7 @@ class Instructions extends Component {
 
   pre_survey_completition = () => {
     const results = {
-      id: this.state.user_id,
+      id: this.state.id,
       initial_stress_levels: this.state.stress_level,
     };
     console.log(results);
