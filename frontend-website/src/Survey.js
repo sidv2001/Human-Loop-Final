@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
+import { getRandomInt } from "./helpers";
 
 class Survey extends Component {
   state = {
@@ -16,12 +17,15 @@ class Survey extends Component {
       performance: null,
       effort: null,
       frustration: null,
+      attention_correct_answer: getRandomInt(5),
+      attention: null,
     },
     mental: 0,
     temporal: 0,
     performance: 0,
     effort: 0,
     frustration: 0,
+    attention: 0,
     display_alert: false,
     display_modal: this.props.enabled,
   };
@@ -47,6 +51,7 @@ class Survey extends Component {
     const notNull = (value) => value != null;
     if (Object.values(this.state.results).every(notNull)) {
       this.props.update_results(this.state.results, this.props.current_survey);
+      console.log(this.state.results);
       const reset_res = {
         results: {
           mental: null,
@@ -54,15 +59,19 @@ class Survey extends Component {
           performance: null,
           effort: null,
           frustration: null,
+          attention_correct_answer: getRandomInt(5),
+          attention: null,
         },
         mental: 0,
         temporal: 0,
         performance: 0,
         effort: 0,
         frustration: 0,
+        attention: 0,
       };
       this.setState(reset_res);
       this.setAlert(false);
+      console.log(reset_res);
     } else {
       this.setAlert(true);
     }
@@ -112,6 +121,14 @@ class Survey extends Component {
       this.setState({ adapt_state });
     };
   };
+  setAttention = (value) => {
+    return (event) => {
+      const adapt_state = this.state;
+      adapt_state.attention = value;
+      adapt_state.results.attention = value;
+      this.setState({ adapt_state });
+    };
+  };
 
   displayAlert = () => {
     if (this.state.display_alert) {
@@ -157,22 +174,34 @@ class Survey extends Component {
       );
     }
   };
+  displayTitle = () => {
+    if (this.props.final) {
+      return <React.Fragment>Current Cognitive Workload Survey</React.Fragment>;
+    } else {
+      return (
+        <React.Fragment>
+          Average Condition Cognitive Workload Survey
+        </React.Fragment>
+      );
+    }
+  };
 
   displayModal = () => {
     const normal_likert = [
-      "Very High",
-      "Above Average",
-      "Average",
-      "Below Average",
       "Very Low",
+      "Below Average",
+      "Average",
+      "Above Average",
+      "Very High",
     ];
     const performance = [
-      "Excellent",
-      "Above Average",
-      "Average",
-      "Below Average",
       "Very Poor",
+      "Below Average",
+      "Average",
+      "Above Average",
+      "Excellent",
     ];
+    const attention = ["0", "1", "2", "3", "4"];
     return (
       <div>
         <Modal
@@ -184,7 +213,7 @@ class Survey extends Component {
           centered
         >
           <Modal.Header>
-            <Modal.Title>Cognitive Workload Survey</Modal.Title>
+            <Modal.Title>{this.displayTitle()}</Modal.Title>
             {this.displayAlert()} <br />
           </Modal.Header>
           <Modal.Body>
@@ -248,6 +277,17 @@ class Survey extends Component {
                     "Frustration",
                     this.setFrustration,
                     normal_likert
+                  )}
+                </Form.Group>
+                <Form.Group as={Row}>
+                  <Form.Label>
+                    Please answer the number{" "}
+                    {this.state.results.attention_correct_answer}
+                  </Form.Label>
+                  {this.getLikertQuestion(
+                    "Attention",
+                    this.setAttention,
+                    attention
                   )}
                 </Form.Group>
               </Form>

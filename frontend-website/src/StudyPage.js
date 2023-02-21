@@ -272,7 +272,8 @@ class StudyPage extends Component {
   };
 
   updateSurveyCondition = () => {
-    if (this.state.current_time === this.state.total_time - 1000) {
+    // if (this.state.current_time === this.state.total_time - 1000) {
+    if (this.state.current_time === 5000) {
       this.startFinalSurvey();
     }
   };
@@ -407,6 +408,7 @@ class StudyPage extends Component {
                     }
                     time={this.state.current_time}
                     update_results={this.updateSide}
+                    display_survey={this.state.display_survey}
                   ></DistractionTask>
                 </div>
                 <div className="col-sm border-10">

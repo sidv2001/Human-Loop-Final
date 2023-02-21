@@ -271,6 +271,10 @@ export function msToString(numMs) {
   ); // + ":" + ms.toLocaleString('en-US', {minimumIntegerDigits: 3, useGrouping:false});
 }
 
+export function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 export function hasMinWords(sentence, minWords = 3, minLengthWords = 2) {
   var words = sentence.split(" ");
   if (words.length < minWords) {

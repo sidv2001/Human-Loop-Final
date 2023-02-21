@@ -11,7 +11,7 @@ export class FinalSurvey extends React.Component {
       "multitask_impact",
       "right_task_impact",
       "diff_task",
-      "perference",
+      "preference",
     ];
     this.state = {
       survey_results: {},
@@ -120,7 +120,7 @@ export class FinalSurvey extends React.Component {
                   as="textarea"
                   rows={3}
                   onChange={(e) =>
-                    this.handleFormChange("stress_factors", e.target.value)
+                    this.handleFormChange("multitask_impact", e.target.value)
                   }
                 />
               </Form.Group>
@@ -153,27 +153,27 @@ export class FinalSurvey extends React.Component {
                   }
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="perference">
+              <Form.Group className="mb-3" controlId="preference">
                 <Form.Label>
                   In some of the tasks, you saw a robotic arm. Imagine this
                   robot helping you with a task. Would you prefer: <br />
                   <ul>
                     <li>
-                      a robot that always successfully performs a task by asking
+                      a robot that always always succeeds at its task by asking
                       you how to do the task every time
                     </li>
                     <li>
-                      a robot that does not ask you all the time but
-                      occasionally fails?
+                      a robot that occasionally fails at its task, but rarely
+                      asks you how to do the task?
                     </li>
                   </ul>
-                  Please elaborate.{" "}
+                  Please elaborate on why you prefer that option.{" "}
                 </Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={3}
                   onChange={(e) =>
-                    this.handleFormChange("perference", e.target.value)
+                    this.handleFormChange("preference", e.target.value)
                   }
                 />
               </Form.Group>

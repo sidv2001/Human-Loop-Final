@@ -53,6 +53,7 @@ class DistractionTask extends Component {
           source={this.props.config["source"]}
           disabled={this.state.disabled}
           update_results={this.setAnswer}
+          display_survey={this.props.display_survey}
         ></VideoCap>
       );
     }

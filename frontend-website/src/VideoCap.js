@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ReactPlayer from "react-player";
 
 class VideoCap extends Component {
-  state = {};
+  state = { prev_disp: false, playing: false, controls: true };
 
   update_answers = (event) => {
     this.props.update_results({
@@ -12,6 +12,23 @@ class VideoCap extends Component {
       busyness: 3,
       question: this.props.source,
     });
+  };
+
+  static getDerivedStateFromProps = (nextProps, prevState) => {
+    const adapt_state = prevState;
+    if (nextProps.display_survey) {
+      adapt_state.controls = false;
+      adapt_state.playing = false;
+      adapt_state.prev_disp = true;
+    } else if (!nextProps.display_survey && adapt_state.prev_disp) {
+      adapt_state.controls = true;
+      adapt_state.prev_disp = false;
+    }
+    return adapt_state;
+  };
+
+  setPlaying = () => {
+    this.setState({ playing: true });
   };
 
   render() {
@@ -25,7 +42,9 @@ class VideoCap extends Component {
                   url={`../images/${this.props.source}.MP4`}
                   width="100%"
                   height="100%"
-                  controls
+                  playing={this.state.playing}
+                  controls={this.state.controls}
+                  onPlay={this.setPlaying}
                 />
               </div>
               <div>

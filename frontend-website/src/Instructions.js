@@ -172,15 +172,14 @@ class Instructions extends Component {
                 </div>
                 <ListGroup as="ol" numbered>
                   <ListGroup.Item as="li">
-                    In this study you will complete 14 conditions that are 5
-                    minutes and 30 seconds long. <br></br>In each{" "}
-                    <b>condition</b>, you will be asked to complete two
-                    different <b>tasks</b> on either side of your screen{" "}
+                    You will complete 14 conditions that are 5 minutes and 30
+                    seconds long. <br></br>In each <b>condition</b>, you will be
+                    asked to complete two different <b>tasks</b> on the right
+                    and left side of your screen{" "}
                   </ListGroup.Item>
                   <ListGroup.Item as="li">
-                    For each condition we want you to do these tasks while
-                    keeping in mind your cognitive workload while doing these
-                    tasks and how difficult or easy they are currently, and
+                    For each condition, we want you to do these tasks while
+                    keeping in mind how difficult or easy they are to do,
                     relative to other conditions.{" "}
                   </ListGroup.Item>
                   <ListGroup.Item as="li">
