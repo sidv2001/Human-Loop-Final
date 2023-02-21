@@ -201,7 +201,6 @@ class Survey extends Component {
       "Above Average",
       "Excellent",
     ];
-    const attention = ["0", "1", "2", "3", "4"];
     return (
       <div>
         <Modal
@@ -281,13 +280,14 @@ class Survey extends Component {
                 </Form.Group>
                 <Form.Group as={Row}>
                   <Form.Label>
-                    Please answer the number{" "}
-                    {this.state.results.attention_correct_answer}
+                    Please select "
+                    {normal_likert[this.state.results.attention_correct_answer]}
+                    "
                   </Form.Label>
                   {this.getLikertQuestion(
                     "Attention",
                     this.setAttention,
-                    attention
+                    normal_likert
                   )}
                 </Form.Group>
               </Form>

@@ -272,8 +272,8 @@ class StudyPage extends Component {
   };
 
   updateSurveyCondition = () => {
-    // if (this.state.current_time === this.state.total_time - 1000) {
-    if (this.state.current_time === 5000) {
+    if (this.state.current_time === this.state.total_time - 1000) {
+      // if (this.state.current_time === 5000) {
       this.startFinalSurvey();
     }
   };
@@ -295,10 +295,15 @@ class StudyPage extends Component {
                     on the right-side of the screen.
                     <ListGroup as="ol" numbered>
                       <ListGroup.Item as="li">
-                        The left-side task will be present for the entire
-                        duration of the timer{" "}
-                        {"(or there might not be a left-side task)"}.<br></br>{" "}
-                        The right-side task(s) will appear occasionally.
+                        The tasks will appear occasionally. At some times you
+                        might have no tasks to complete, and at other times you
+                        might have two tasks to complete simultaneously.
+                      </ListGroup.Item>
+                      <ListGroup.Item as="li">
+                        Periodically, you will be asked to complete a brief
+                        survey. <b>You MUST complete the survey to proceed.</b>{" "}
+                        <br></br>
+                        The timer will be paused for the duration of the survey.
                       </ListGroup.Item>
                       <ListGroup.Item as="li">
                         You will be asked two types of surveys during the
@@ -325,12 +330,6 @@ class StudyPage extends Component {
                         much time is left in the condition. <br></br>
                         Additionally, some questions have timers which indicate
                         how much time you have to answer that specific question.
-                      </ListGroup.Item>
-                      <ListGroup.Item as="li">
-                        Periodically, you will be asked to complete a brief
-                        survey. <b>You MUST complete the survey to proceed.</b>{" "}
-                        <br></br>
-                        The timer will be paused for the duration of the survey.
                       </ListGroup.Item>
                     </ListGroup>
                   </div>
