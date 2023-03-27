@@ -35,7 +35,14 @@ class StudyPage extends Component {
       end_timer_id: null,
       end_timer: "00:00:30",
       survey_interval_id: null,
+      start_time: 0,
+      start_timer_id: null,
+      start_timer: "00:00:30",
     };
+  }
+
+  componentDidMount() {
+    this.startStartTimer();
   }
 
   updateSurvey = (results, current_survey) => {
@@ -94,7 +101,7 @@ class StudyPage extends Component {
       this.pauseTimer();
       clearInterval(this.state.survey_interval_id);
       this.setSurveyTimerId(null);
-    }, 3000);
+    }, 1000);
     this.setSurveyTimerId(id);
   };
 
@@ -129,14 +136,28 @@ class StudyPage extends Component {
     this.setState({ adapt_state });
   };
 
+  setStartTimer = (time) => {
+    const adapt_state = this.state;
+    adapt_state.start_timer = time;
+
+    this.setState({ adapt_state });
+  };
+
   setEndTimerId = (time) => {
     const adapt_state = this.state;
     adapt_state.end_timer_id = time;
     this.setState({ adapt_state });
   };
 
+  setStartTimerId = (time) => {
+    const adapt_state = this.state;
+    adapt_state.start_timer_id = time;
+    this.setState({ adapt_state });
+  };
+
   studyCompletition = () => {
     clearInterval(this.state.end_timer_id);
+
     const results = {
       id: this.state.user_id,
       study_condition: this.state.current_condition,
@@ -144,6 +165,8 @@ class StudyPage extends Component {
       main_task_results: this.state.main_task_results,
       distraction_task_results: this.state.distraction_task_results,
       survey_results: this.state.survey_results,
+      start_time: this.state.start_time, // fill this in
+      end_time: this.state.end_time, //fill this in
     };
     console.log(results);
     fetch(this.props.server_url + "data", {
@@ -167,6 +190,19 @@ class StudyPage extends Component {
       console.log(this.state.end_time);
     }
   };
+
+  updateStartTime = () => {
+    if (this.state.start_time === 30000) {
+      this.startTimer();
+    } else {
+      const adapt_state = this.state;
+      adapt_state.start_time += 1000;
+      this.setState({ adapt_state });
+      this.printStartTime();
+      console.log(this.state.start_time);
+    }
+  };
+
   setStart = (truth) => {
     const adapt_state = this.state;
     adapt_state.experiment_start = truth;
@@ -218,10 +254,36 @@ class StudyPage extends Component {
     };
   };
 
+  getStartTimeRemaining = () => {
+    const total = 30000 - this.state.start_time;
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / 1000 / 60 / 60) % 24);
+    return {
+      total,
+      hours,
+      minutes,
+      seconds,
+    };
+  };
+
   printEndTime = () => {
     let { total, hours, minutes, seconds } = this.getEndTimeRemaining();
     if (total >= 0) {
       this.setEndTimer(
+        (hours > 9 ? hours : "0" + hours) +
+          ":" +
+          (minutes > 9 ? minutes : "0" + minutes) +
+          ":" +
+          (seconds > 9 ? seconds : "0" + seconds)
+      );
+    }
+  };
+
+  printStartTime = () => {
+    let { total, hours, minutes, seconds } = this.getStartTimeRemaining();
+    if (total >= 0) {
+      this.setStartTimer(
         (hours > 9 ? hours : "0" + hours) +
           ":" +
           (minutes > 9 ? minutes : "0" + minutes) +
@@ -257,11 +319,20 @@ class StudyPage extends Component {
   };
 
   startTimer = () => {
+    clearInterval(this.state.start_timer_id);
     const id = setInterval(() => {
       this.updateCurrentTime();
     }, 1000);
     this.setTimerId(id);
     this.setStart(false);
+    console.log(this.state);
+  };
+
+  startStartTimer = () => {
+    const id = setInterval(() => {
+      this.updateStartTime();
+    }, 1000);
+    this.setStartTimerId(id);
   };
 
   startEndTimer = () => {
@@ -330,6 +401,17 @@ class StudyPage extends Component {
                         much time is left in the condition. <br></br>
                         Additionally, some questions have timers which indicate
                         how much time you have to answer that specific question.
+                      </ListGroup.Item>
+                      <ListGroup.Item as="li">
+                        You have 30 seconds to start this condition. If you do
+                        not click the "start study" <br /> buttton in the time
+                        shown below, the condition will automatically start.{" "}
+                        <br />
+                        <b>
+                          Time Remaining till condition automatically starts
+                        </b>
+                        <br />
+                        <h3>{this.state.start_timer}</h3>
                       </ListGroup.Item>
                     </ListGroup>
                   </div>
@@ -417,6 +499,7 @@ class StudyPage extends Component {
                         "main-task"
                       ]
                     }
+                    study_part={this.props.router.params.study_part_i}
                     user_id={this.state.user_id}
                     time={this.state.current_time}
                     update_results={this.updateMain}

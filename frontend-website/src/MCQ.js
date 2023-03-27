@@ -9,6 +9,7 @@ class MCQ extends Component {
     form: {
       question: this.props.config["question"],
       answer: null,
+      correct_answer: this.props.config["correct_answer"],
       time_taken: 0,
       answer_complexity: this.props.config["answer_complexity"],
       question_difficulty: this.props.question_difficulty,

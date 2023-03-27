@@ -5,8 +5,8 @@ import BBox from "./BBox";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { shuffle, mulberry32, cyrb53 } from "./helpers";
 
-function generateRandomOrdering(id, length) {
-  var seed = cyrb53(id);
+function generateRandomOrdering(id, condition_num, length) {
+  var seed = cyrb53(id + condition_num);
   var rand = mulberry32(seed);
   const order = [...Array(length).keys()];
   shuffle(order, rand);
@@ -20,6 +20,7 @@ class MainQuestions extends Component {
     when_to_display: this.props.config["first question"],
     ordering: generateRandomOrdering(
       this.props.user_id,
+      this.props.study_part,
       this.props.config["questions"].length
     ),
     last_call: 0,
